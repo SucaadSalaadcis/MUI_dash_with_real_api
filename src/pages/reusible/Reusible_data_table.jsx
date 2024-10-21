@@ -40,7 +40,7 @@ const Reusible_data_table = ({ apiUrl, columns, title }) => {
     }, [currentPage, apiUrl]);
 
     return (
-        <Paper elevation={3} style={{ padding: '80px', borderRadius: '8px' }}>
+        <Paper elevation={3} style={{ padding: '70px', borderRadius: '8px' }}>
 
             <Typography variant="h5" gutterBottom style={{ textAlign: 'center' }}>
                 {title} Data Table

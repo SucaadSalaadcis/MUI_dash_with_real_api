@@ -6,11 +6,13 @@ import Reusible_data_table from '../reusible/Reusible_data_table';
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 
 
-export default function Permission() {
+export default function Product() {
 
     const userColumns = [
         { field: 'id', headerName: 'ID', width: 150 },
-        { field: 'title', headerName: 'Title', width: 150 },
+        { field: 'name', headerName: 'Name', width: 150 },
+        { field: 'price', headerName: 'Price', width: 150 },
+        { field: 'commission', headerName: 'Commission', width: 150 },
     ];
 
     return (
@@ -40,7 +42,7 @@ export default function Permission() {
 
                         <li class="nav-item">
                             <Link to={'/virtual_reality'} class="nav-link text-white">
-                                {/* <a class="nav-link text-white " href="./pages/virtual-reality.html"> */}
+                              
                                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                                     <i class="material-icons opacity-10">view_in_ar</i>
                                 </div>
@@ -65,7 +67,7 @@ export default function Permission() {
                         </li>
 
                         <li class="nav-item">
-                            <Link to={'/user_management/permission'} class="nav-link text-white active bg-gradient-primary" >
+                            <Link to={'/user_management/permission'} class="nav-link text-white" >
                                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                                     {/* <i class="material-icons opacity-10">assignment</i> */}
                                     <CircleOutlinedIcon />
@@ -91,8 +93,10 @@ export default function Permission() {
                                 <span class="nav-link-text ms-1">Users</span>
                             </Link>
                         </li>
+                        
+                       
                         <li class="nav-item">
-                            <Link to={'/products'} class="nav-link text-white" >
+                            <Link to={'/products'} class="nav-link text-white active bg-gradient-primary" >
                                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                                     {/* <i class="material-icons opacity-10">assignment</i> */}
                                     <CircleOutlinedIcon />
@@ -117,9 +121,9 @@ export default function Permission() {
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                                 <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
-                                <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Permissions</li>
+                                <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Products</li>
                             </ol>
-                            <h6 class="font-weight-bolder mb-0">Permissions</h6>
+                            <h6 class="font-weight-bolder mb-0">Products</h6>
                         </nav>
                         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                             <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -233,9 +237,9 @@ export default function Permission() {
                         {/* <div class="col-lg-8 col-md-10 mx-auto"> */}
                         {/* content page */}
                         <Reusible_data_table
-                            apiUrl="http://spiky-crater-dep2vxlep8.ploi.online/api/v1/permissions"
+                            apiUrl="http://spiky-crater-dep2vxlep8.ploi.online/api/v1/products"
                             columns={userColumns}
-                            title={'Permissions'}
+                            title={'Products'}
                         />
 
                         {/* </div> */}

@@ -113,7 +113,7 @@ export default function Role() {
                                 <span class="nav-link-text ms-1">Permissions</span>
                             </Link>
                         </li>
-                        
+
                         <li class="nav-item">
                             <Link to={'/user_management/users'} class="nav-link text-white" >
                                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -131,6 +131,16 @@ export default function Role() {
                                     <CircleOutlinedIcon />
                                 </div>
                                 <span class="nav-link-text ms-1">Roles</span>
+                            </Link>
+                        </li>
+
+                        <li class="nav-item">
+                            <Link to={'/products'} class="nav-link text-white" >
+                                <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                                    {/* <i class="material-icons opacity-10">assignment</i> */}
+                                    <CircleOutlinedIcon />
+                                </div>
+                                <span class="nav-link-text ms-1">Products</span>
                             </Link>
                         </li>
 
