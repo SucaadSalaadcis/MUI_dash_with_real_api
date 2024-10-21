@@ -6,11 +6,12 @@ import Reusible_data_table from '../reusible/Reusible_data_table';
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 
 
-export default function Permission() {
+export default function Users() {
 
     const userColumns = [
         { field: 'id', headerName: 'ID', width: 150 },
-        { field: 'title', headerName: 'Title', width: 150 },
+        { field: 'name', headerName: 'Name', width: 150 },
+        { field: 'email', headerName: 'Email', width: 150 },
     ];
 
     return (
@@ -65,7 +66,7 @@ export default function Permission() {
                         </li>
 
                         <li class="nav-item">
-                            <Link to={'/user_management/permission'} class="nav-link text-white active bg-gradient-primary" >
+                            <Link to={'/user_management/permission'} class="nav-link text-white" >
                                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                                     {/* <i class="material-icons opacity-10">assignment</i> */}
                                     <CircleOutlinedIcon />
@@ -83,7 +84,7 @@ export default function Permission() {
                             </Link>
                         </li>
                         <li class="nav-item">
-                            <Link to={'/user_management/users'} class="nav-link text-white" >
+                            <Link to={'user_management/users'} class="nav-link text-white active bg-gradient-primary" >
                                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                                     {/* <i class="material-icons opacity-10">assignment</i> */}
                                     <CircleOutlinedIcon />
@@ -224,9 +225,9 @@ export default function Permission() {
                         {/* <div class="col-lg-8 col-md-10 mx-auto"> */}
                         {/* content page */}
                         <Reusible_data_table
-                            apiUrl="http://spiky-crater-dep2vxlep8.ploi.online/api/v1/permissions"
+                            apiUrl="http://spiky-crater-dep2vxlep8.ploi.online/api/v1/users"
                             columns={userColumns}
-                            title={'Permissions'}
+                            title={'Users'}
                         />
 
                         {/* </div> */}

@@ -74,6 +74,15 @@ export default function Rtl() {
                                 <span class="nav-link-text ms-1">الأدوار</span>
                             </Link>
                         </li>
+                        <li class="nav-item">
+                            <Link to={'/user_management/users'} class="nav-link text-white" >
+                                <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                                    {/* <i class="material-icons opacity-10">assignment</i> */}
+                                    <CircleOutlinedIcon />
+                                </div>
+                                <span class="nav-link-text ms-1">المستخدم</span>
+                            </Link>
+                        </li>
 
                     </ul>
                 </div>
@@ -274,7 +283,7 @@ export default function Rtl() {
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="row my-4">
                         <div class="col-lg-8 col-md-6 mb-md-0 mb-4">
                             <div class="card">

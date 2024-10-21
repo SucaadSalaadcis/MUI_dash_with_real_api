@@ -9,6 +9,7 @@ import Sign_up from './pages/Sign_up'
 import Sign_in from './pages/Sign_in'
 import Permission from './pages/permissionManage/Permission';
 import Role from './pages/roles/Role';
+import Users from './pages/userManage/Users';
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
           <Route path='/sign_in' element={<Sign_in />} />
           <Route path='/user_management/permission' element={<Permission />} />
           <Route path='/user_management/roles' element={<Role />} />
+          <Route path='/user_management/users' element={<Users />} />
         </Routes>
       </B>
 
