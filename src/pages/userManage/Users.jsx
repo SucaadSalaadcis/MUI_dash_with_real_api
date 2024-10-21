@@ -41,7 +41,7 @@ export default function Users() {
 
                         <li class="nav-item">
                             <Link to={'/virtual_reality'} class="nav-link text-white">
-                                {/* <a class="nav-link text-white " href="./pages/virtual-reality.html"> */}
+                              
                                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                                     <i class="material-icons opacity-10">view_in_ar</i>
                                 </div>
