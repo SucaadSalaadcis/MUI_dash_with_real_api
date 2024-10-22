@@ -20,7 +20,7 @@ import CustomerEdit from './pages/customerManage/CustomerEdit';
 export default function App() {
   return (
     <>
-      {/* <Index /> */}
+   
       <B>
         <Routes>
           <Route path='/' element={<Index />} />
