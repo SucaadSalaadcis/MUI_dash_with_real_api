@@ -6,11 +6,12 @@ import Reusible_data_table from '../reusible/Reusible_data_table';
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 import Inventory2Icon from '@mui/icons-material/Inventory2';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
+import FaceIcon from '@mui/icons-material/Face';
 
 
 export default function Permission() {
 
-    const userColumns = [
+    const permissionColumns = [
         { field: 'id', headerName: 'ID', width: 150 },
         { field: 'title', headerName: 'Title', width: 150 },
     ];
@@ -109,6 +110,15 @@ export default function Permission() {
                                     <SupportAgentIcon />
                                 </div>
                                 <span class="nav-link-text ms-1">Agents</span>
+                            </Link>
+                        </li>
+                        <li class="nav-item">
+                            <Link to={'/customers'} class="nav-link text-white" >
+                                <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                                    {/* <i class="material-icons opacity-10">assignment</i> */}
+                                    <FaceIcon />
+                                </div>
+                                <span class="nav-link-text ms-1">Customers</span>
                             </Link>
                         </li>
 
@@ -245,7 +255,7 @@ export default function Permission() {
                         {/* content page */}
                         <Reusible_data_table
                             apiUrl="http://spiky-crater-dep2vxlep8.ploi.online/api/v1/permissions"
-                            columns={userColumns}
+                            columns={permissionColumns}
                             title={'Permissions'}
                         />
 

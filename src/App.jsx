@@ -12,6 +12,7 @@ import Role from './pages/roles/Role';
 import Users from './pages/userManage/Users';
 import Product from './pages/productManage/Product';
 import Agent from './pages/agentManage/Agent';
+import Customer from './pages/customerManage/Customer';
 
 export default function App() {
   return (
@@ -29,6 +30,7 @@ export default function App() {
           <Route path='/user_management/users' element={<Users />} />
           <Route path='/products' element={<Product />} />
           <Route path='/agents' element={<Agent />} />
+          <Route path='/customers' element={<Customer />} />
         </Routes>
       </B>
 

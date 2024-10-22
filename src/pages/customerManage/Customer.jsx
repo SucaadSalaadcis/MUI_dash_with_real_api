@@ -4,56 +4,20 @@ import { Link } from 'react-router-dom'
 import Reusible_data_table from '../reusible/Reusible_data_table';
 
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
-import { Button, Box } from '@mui/material';
 import Inventory2Icon from '@mui/icons-material/Inventory2';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 import FaceIcon from '@mui/icons-material/Face';
 
-export default function Role() {
+export default function Customer() {
 
-    const roleColumns = [
+    const custColumns = [
         { field: 'id', headerName: 'ID', width: 150 },
-        { field: 'title', headerName: 'Title', width: 150 },
-        // { field: 'permissions', headerName: 'Permissions', width: 150 },
-        {
-            field: 'permissions',
-            headerName: 'Permissions',
-            width: 300,
-            renderCell: (params) => (
-                <Box
-                    sx={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        gap: '4px', // Space between buttons
-                        maxHeight: '150px', // Set max height to prevent row overflow
-                        overflowY: 'auto', // Scroll when content exceeds max height
-                        padding: '5px', // Optional padding for better layout
-                        backgroundColor: '#f5f5f5',
-                        borderRadius: '4px',
-                    }}
-                >
-                    {params.value && params.value.length > 0 ? (
-                        params.value.map((permission, index) => (
-                            <Button
-                                key={index}
-                                style={{
-                                    color: 'white',
-                                    border: 'none',
-                                    borderRadius: '20px',
-                                    background: '#E53270',
-                                    padding: '2px 6px',
-                                }}
-                            >
-                                {permission.title}
-                            </Button>
-                        ))
-                    ) : (
-                        <span>No Permissions</span>
-                    )}
-                </Box>
-            ),
-        },
+        { field: 'fullname', headerName: 'Full Name', width: 150 },
+        { field: 'phone', headerName: 'Phone', width: 150 },
+        { field: 'agency_id', headerName: 'Agency ID', width: 150 },
     ];
+  
+
 
     return (
         <body class="g-sidenav-show  bg-gray-200">
@@ -82,7 +46,7 @@ export default function Role() {
 
                         <li class="nav-item">
                             <Link to={'/virtual_reality'} class="nav-link text-white">
-                                {/* <a class="nav-link text-white " href="./pages/virtual-reality.html"> */}
+
                                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                                     <i class="material-icons opacity-10">view_in_ar</i>
                                 </div>
@@ -115,7 +79,15 @@ export default function Role() {
                                 <span class="nav-link-text ms-1">Permissions</span>
                             </Link>
                         </li>
-
+                        <li class="nav-item">
+                            <Link to={'/user_management/roles'} class="nav-link text-white" >
+                                <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                                    {/* <i class="material-icons opacity-10">assignment</i> */}
+                                    <CircleOutlinedIcon />
+                                </div>
+                                <span class="nav-link-text ms-1">Roles</span>
+                            </Link>
+                        </li>
                         <li class="nav-item">
                             <Link to={'/user_management/users'} class="nav-link text-white" >
                                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -125,17 +97,6 @@ export default function Role() {
                                 <span class="nav-link-text ms-1">Users</span>
                             </Link>
                         </li>
-
-                        <li class="nav-item">
-                            <Link to={'/user_management/roles'} class="nav-link text-white active bg-gradient-primary" >
-                                <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                                    {/* <i class="material-icons opacity-10">assignment</i> */}
-                                    <CircleOutlinedIcon />
-                                </div>
-                                <span class="nav-link-text ms-1">Roles</span>
-                            </Link>
-                        </li>
-
                         <li class="nav-item">
                             <Link to={'/products'} class="nav-link text-white" >
                                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -155,7 +116,7 @@ export default function Role() {
                             </Link>
                         </li>
                         <li class="nav-item">
-                            <Link to={'/customers'} class="nav-link text-white" >
+                            <Link to={'/customers'} class="nav-link text-white active bg-gradient-primary" >
                                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                                     {/* <i class="material-icons opacity-10">assignment</i> */}
                                     <FaceIcon />
@@ -180,9 +141,9 @@ export default function Role() {
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                                 <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
-                                <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Roles</li>
+                                <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Customers</li>
                             </ol>
-                            <h6 class="font-weight-bolder mb-0">Roles</h6>
+                            <h6 class="font-weight-bolder mb-0">Customers</h6>
                         </nav>
                         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                             <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -296,9 +257,9 @@ export default function Role() {
                         {/* <div class="col-lg-8 col-md-10 mx-auto"> */}
                         {/* content page */}
                         <Reusible_data_table
-                            apiUrl="http://spiky-crater-dep2vxlep8.ploi.online/api/v1/roles"
-                            columns={roleColumns}
-                            title={'Roles'}
+                            apiUrl="http://spiky-crater-dep2vxlep8.ploi.online/api/v1/customers"
+                            columns={custColumns}
+                            title={'Customers'}
                         />
 
                         {/* </div> */}

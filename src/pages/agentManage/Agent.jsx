@@ -6,11 +6,11 @@ import Reusible_data_table from '../reusible/Reusible_data_table';
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 import Inventory2Icon from '@mui/icons-material/Inventory2';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
-
+import FaceIcon from '@mui/icons-material/Face';
 
 export default function Agent() {
 
-  const userColumns = [
+  const agentColumns = [
     { field: 'id', headerName: 'ID', width: 150, },
     { field: 'fullname', headerName: 'Fulll Name', width: 150 },
     { field: 'description', headerName: 'Description', width: 150 },
@@ -112,6 +112,15 @@ export default function Agent() {
                   <SupportAgentIcon />
                 </div>
                 <span class="nav-link-text ms-1">Agents</span>
+              </Link>
+            </li>
+            <li class="nav-item">
+              <Link to={'/customers'} class="nav-link text-white" >
+                <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                  {/* <i class="material-icons opacity-10">assignment</i> */}
+                  <FaceIcon />
+                </div>
+                <span class="nav-link-text ms-1">Customers</span>
               </Link>
             </li>
 
@@ -248,7 +257,7 @@ export default function Agent() {
             {/* content page */}
             <Reusible_data_table
               apiUrl="http://spiky-crater-dep2vxlep8.ploi.online/api/v1/agents"
-              columns={userColumns}
+              columns={agentColumns}
               title={'Agents'}
             />
 

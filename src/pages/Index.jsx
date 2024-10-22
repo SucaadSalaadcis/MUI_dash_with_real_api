@@ -112,6 +112,15 @@ export default function Index() {
                                 <span class="nav-link-text ms-1">Agents</span>
                             </Link>
                         </li>
+                        <li class="nav-item">
+                            <Link to={'/customers'} class="nav-link text-white" >
+                                <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                                    {/* <i class="material-icons opacity-10">assignment</i> */}
+                                    <SupportAgentIcon />
+                                </div>
+                                <span class="nav-link-text ms-1">Customers</span>
+                            </Link>
+                        </li>
 
                     </ul>
                 </div>

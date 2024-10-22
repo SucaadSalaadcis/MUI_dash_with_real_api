@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 import Inventory2Icon from '@mui/icons-material/Inventory2';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
+import FaceIcon from '@mui/icons-material/Face';
 
 
 export default function Rtl() {
@@ -101,6 +102,15 @@ export default function Rtl() {
                                     <SupportAgentIcon />
                                 </div>
                                 <span class="nav-link-text ms-1">عامل</span>
+                            </Link>
+                        </li>
+                        <li class="nav-item">
+                            <Link to={'/customers'} class="nav-link text-white" >
+                                <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                                    {/* <i class="material-icons opacity-10">assignment</i> */}
+                                    <FaceIcon />
+                                </div>
+                                <span class="nav-link-text ms-1">عميل</span>
                             </Link>
                         </li>
 

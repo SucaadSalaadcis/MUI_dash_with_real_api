@@ -70,13 +70,18 @@ const Reusible_data_table = ({ apiUrl, columns, title }) => {
                                 '& .row-odd': {
                                     backgroundColor: '#ffffff', // White for odd rows
                                 },
-                               
+
                                 //& refers to the parent element where this style is being applied
                                 // .MuiDataGrid-columnHeader : wa mui class
                                 '& .MuiDataGrid-columnHeader': {
                                     fontWeight: 'bolder',
-                                    fontSize: '17px', 
+                                    fontSize: '17px',
                                     color: '#E53270'
+                                },
+                                '& .MuiDataGrid-cell': {
+                                    display: 'flex',        // Make the cell a flex container
+                                    justifyContent: 'start',  // Center horizontally
+                                    alignItems: 'center',      // Center vertically
                                 },
 
 
