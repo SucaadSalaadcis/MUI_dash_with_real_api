@@ -12,13 +12,16 @@ import toast from 'react-hot-toast';
 import EditIcon from '@mui/icons-material/Edit';
 
 
-export default function PermissionEdit() {
+export default function CustomerEdit() {
 
     const getToken = () => {
         return Cookies.get('token');
     };
 
-    const [title, setTitle] = useState("");
+    const [fullname, setFullName] = useState("");
+    const [phone, setPhone] = useState("");
+    const [address, setAddress] = useState("");
+    const [agency_id, setagency_id] = useState("");
 
 
     const params = useParams();
@@ -27,13 +30,16 @@ export default function PermissionEdit() {
 
     // get single data 
     const handleSingleData = () => {
-        axios.get(`https://spiky-crater-dep2vxlep8.ploi.online/api/v1/permissions/${params.id}/edit`, {
+        axios.get(`https://spiky-crater-dep2vxlep8.ploi.online/api/v1/customers/${params.id}/edit`, {
             headers: {
                 'Authorization': `Bearer ${getToken()}`,
                 'Content-Type': 'application/x-www-form-urlencoded',
             },
         }).then(res => {
-            setTitle(res.data.data.title);
+            setFullName(res.data.data.fullname);
+            setPhone(res.data.data.phone);
+            setAddress(res.data.data.address);
+            setagency_id(res.data.data.agency_id);
             // console.log(res.data.data.title);
         }).catch(err => console.log(err));
     }
@@ -46,8 +52,8 @@ export default function PermissionEdit() {
     // put
     const handleUpdate = (e) => {
         e.preventDefault();
-        axios.put(`https://spiky-crater-dep2vxlep8.ploi.online/api/v1/permissions/${params.id}`, {
-            title,
+        axios.put(`https://spiky-crater-dep2vxlep8.ploi.online/api/v1/customers/${params.id}`, {
+            fullname, phone, address, agency_id
         }, {
             headers: {
                 'Authorization': `Bearer ${getToken()}`,
@@ -55,9 +61,10 @@ export default function PermissionEdit() {
             },
         }).then(() => {
             toast.success("Updated Successfully...");
-            navigate('/user_management/permission')
+            navigate('/customers')
         }).catch(err => console.log(err));
     }
+
 
 
 
@@ -114,7 +121,7 @@ export default function PermissionEdit() {
                         </li>
 
                         <li class="nav-item">
-                            <Link to={'/user_management/permission'} class="nav-link text-white active bg-gradient-primary" >
+                            <Link to={'/user_management/permission'} class="nav-link text-white" >
                                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                                     {/* <i class="material-icons opacity-10">assignment</i> */}
                                     <CircleOutlinedIcon />
@@ -159,7 +166,7 @@ export default function PermissionEdit() {
                             </Link>
                         </li>
                         <li class="nav-item">
-                            <Link to={'/customers'} class="nav-link text-white" >
+                            <Link to={'/customers'} class="nav-link text-white active bg-gradient-primary" >
                                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                                     {/* <i class="material-icons opacity-10">assignment</i> */}
                                     <FaceIcon />
@@ -184,9 +191,9 @@ export default function PermissionEdit() {
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                                 <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
-                                <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Permission Edit</li>
+                                <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Customer Edit</li>
                             </ol>
-                            <h6 class="font-weight-bolder mb-0">Permission Edit</h6>
+                            <h6 class="font-weight-bolder mb-0">Customer Edit</h6>
                         </nav>
                         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                             <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -300,20 +307,41 @@ export default function PermissionEdit() {
                         <div class="col-lg-8 col-md-10 mx-auto">
                             <Paper elevation={3} style={{ padding: '70px', borderRadius: '8px' }}>
                                 {/* content page */}
-                                <Typography sx={{ fontWeight: 'bold', marginBottom: '20px', textAlign: 'center' }}>Permission Edit Form</Typography>
-                                <FormControl variant="standard" sx={{ margin: 1, width: "100%" }} >
+                                <Typography sx={{ fontWeight: 'bold', marginBottom: '20px', textAlign: 'center' }}>Customer Edit Form</Typography>
+                                <FormControl variant="standard" sx={{ margin: 1, width: "100%", gap: '10px' }} >
                                     <TextField
                                         required
                                         id="outlined-required"
-                                        label="Title"
-                                        value={title}
-                                        onChange={(e) => setTitle(e.target.value)}
+                                        label="Full Name"
+                                        value={fullname}
+                                        onChange={(e) => setFullName(e.target.value)}
+                                    />
+                                    <TextField
+                                        required
+                                        id="outlined-required"
+                                        label="Phone"
+                                        value={phone}
+                                        onChange={(e) => setPhone(e.target.value)}
+                                    />
+                                    <TextField
+                                        required
+                                        id="outlined-required"
+                                        label="Address"
+                                        value={address}
+                                        onChange={(e) => setAddress(e.target.value)}
+                                    />
+                                    <TextField
+                                        required
+                                        id="outlined-required"
+                                        label="Agency ID"
+                                        value={agency_id}
+                                        onChange={(e) => setagency_id(e.target.value)}
                                     />
                                 </FormControl>
                                 <Box display="flex" justifyContent="flex-end" mt={2}>
                                     <Button variant="contained"
                                         startIcon={<EditIcon />}
-                                        style={{ backgroundColor: '#E53270' , paddingRight: '25px',}}
+                                        style={{ backgroundColor: '#E53270', paddingRight: '25px', }}
                                         onClick={handleUpdate}
                                     >
                                         Update

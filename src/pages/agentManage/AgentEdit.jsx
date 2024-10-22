@@ -311,28 +311,28 @@ export default function AgentEdit() {
                                     <TextField
                                         required
                                         id="outlined-required"
-                                        label="Required"
+                                        label="Full Name"
                                         value={fullname}
                                         onChange={(e) => setFullName(e.target.value)}
                                     />
                                     <TextField
                                         required
                                         id="outlined-required"
-                                        label="Required"
+                                        label="Description"
                                         value={description}
                                         onChange={(e) => setDescription(e.target.value)}
                                     />
                                     <TextField
                                         required
                                         id="outlined-required"
-                                        label="Required"
+                                        label="Business"
                                         value={business}
                                         onChange={(e) => setBusiness(e.target.value)}
                                     />
                                     <TextField
                                         required
                                         id="outlined-required"
-                                        label="Required"
+                                        label="Phone"
                                         value={phone}
                                         onChange={(e) => setPhone(e.target.value)}
                                     />

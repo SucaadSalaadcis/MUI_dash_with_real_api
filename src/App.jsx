@@ -15,6 +15,7 @@ import Agent from './pages/agentManage/Agent';
 import Customer from './pages/customerManage/Customer';
 import PermissionEdit from './pages/permissionManage/PermissionEdit';
 import AgentEdit from './pages/agentManage/AgentEdit';
+import CustomerEdit from './pages/customerManage/CustomerEdit';
 
 export default function App() {
   return (
@@ -35,8 +36,10 @@ export default function App() {
           <Route path='/agents' element={<Agent />} />
           <Route path='/agent/:id' element={<AgentEdit />} />
           <Route path='/customers' element={<Customer />} />
+          <Route path='/customer/:id' element={<CustomerEdit />} />
         </Routes>
       </B>
+
 
       <Toaster
         toastOptions={{

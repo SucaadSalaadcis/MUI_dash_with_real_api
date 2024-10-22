@@ -98,12 +98,14 @@ const Reusible_data_table = ({ apiUrl, columns, title }) => {
                 </IconButton>
 
                 {
-                location.pathname === '/user_management/permission' ? <Link to={`/permission/${params.row.id}`}>
+                    location.pathname === '/user_management/permission' ? <Link to={`/permission/${params.row.id}`}>
                         <EditIcon style={{ color: "blue" }} />
-                </Link> :  location.pathname === '/agents' ? <Link to={`/agent/${params.row.id}`}>
+                    </Link> : location.pathname === '/agents' ? <Link to={`/agent/${params.row.id}`}>
                         <EditIcon style={{ color: "blue" }} />
-                </Link> : ""
-                
+                    </Link> : location.pathname === '/customers' ? <Link to={`/customer/${params.row.id}`}>
+                        <EditIcon style={{ color: "blue" }} />
+                    </Link> : ""
+
                 }
 
             </>
