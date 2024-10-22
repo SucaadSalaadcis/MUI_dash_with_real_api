@@ -2,6 +2,8 @@ import React, { useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Cookies from 'js-cookie';
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
+import Inventory2Icon from '@mui/icons-material/Inventory2';
+import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 
 export default function Index() {
 
@@ -96,9 +98,18 @@ export default function Index() {
                             <Link to={'/products'} class="nav-link text-white" >
                                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                                     {/* <i class="material-icons opacity-10">assignment</i> */}
-                                    <CircleOutlinedIcon />
+                                    <Inventory2Icon />
                                 </div>
                                 <span class="nav-link-text ms-1">Products</span>
+                            </Link>
+                        </li>
+                        <li class="nav-item">
+                            <Link to={'/agents'} class="nav-link text-white" >
+                                <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                                    {/* <i class="material-icons opacity-10">assignment</i> */}
+                                    <SupportAgentIcon />
+                                </div>
+                                <span class="nav-link-text ms-1">Agents</span>
                             </Link>
                         </li>
 

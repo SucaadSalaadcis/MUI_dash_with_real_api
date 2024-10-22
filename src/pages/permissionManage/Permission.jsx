@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 import Reusible_data_table from '../reusible/Reusible_data_table';
 
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
+import Inventory2Icon from '@mui/icons-material/Inventory2';
+import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 
 
 export default function Permission() {
@@ -20,7 +22,7 @@ export default function Permission() {
                     <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
                     <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/material-dashboard/pages/dashboard " target="_blank">
                         <img src="../assets/img/logo-ct.png" class="navbar-brand-img h-100" alt="main_logo" />
-                        <span class="ms-1 font-weight-bold text-white">Material Dashboard 2</span>
+                        <span class="ms-1 font-weight-bold text-white">ADWAAR Dashboard</span>
                     </a>
                 </div>
                 <hr class="horizontal light mt-0 mb-2" />
@@ -95,9 +97,18 @@ export default function Permission() {
                             <Link to={'/products'} class="nav-link text-white" >
                                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                                     {/* <i class="material-icons opacity-10">assignment</i> */}
-                                    <CircleOutlinedIcon />
+                                    <Inventory2Icon />
                                 </div>
                                 <span class="nav-link-text ms-1">Products</span>
+                            </Link>
+                        </li>
+                        <li class="nav-item">
+                            <Link to={'/agents'} class="nav-link text-white" >
+                                <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                                    {/* <i class="material-icons opacity-10">assignment</i> */}
+                                    <SupportAgentIcon />
+                                </div>
+                                <span class="nav-link-text ms-1">Agents</span>
                             </Link>
                         </li>
 

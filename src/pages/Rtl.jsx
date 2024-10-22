@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
+import Inventory2Icon from '@mui/icons-material/Inventory2';
+import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 
 
 export default function Rtl() {
@@ -87,9 +89,18 @@ export default function Rtl() {
                             <Link to={'/products'} class="nav-link text-white" >
                                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                                     {/* <i class="material-icons opacity-10">assignment</i> */}
-                                    <CircleOutlinedIcon />
+                                    <Inventory2Icon />
                                 </div>
                                 <span class="nav-link-text ms-1">منتجات</span>
+                            </Link>
+                        </li>
+                        <li class="nav-item">
+                            <Link to={'/agents'} class="nav-link text-white" >
+                                <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                                    {/* <i class="material-icons opacity-10">assignment</i> */}
+                                    <SupportAgentIcon />
+                                </div>
+                                <span class="nav-link-text ms-1">عامل</span>
                             </Link>
                         </li>
 
