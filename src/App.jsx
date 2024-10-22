@@ -16,11 +16,12 @@ import Customer from './pages/customerManage/Customer';
 import PermissionEdit from './pages/permissionManage/PermissionEdit';
 import AgentEdit from './pages/agentManage/AgentEdit';
 import CustomerEdit from './pages/customerManage/CustomerEdit';
+import ProductEdit from './pages/productManage/ProductEdit';
 
 export default function App() {
   return (
     <>
-   
+
       <B>
         <Routes>
           <Route path='/' element={<Index />} />
@@ -33,6 +34,7 @@ export default function App() {
           <Route path='/user_management/roles' element={<Role />} />
           <Route path='/user_management/users' element={<Users />} />
           <Route path='/products' element={<Product />} />
+          <Route path='/product/:id' element={<ProductEdit />} />
           <Route path='/agents' element={<Agent />} />
           <Route path='/agent/:id' element={<AgentEdit />} />
           <Route path='/customers' element={<Customer />} />
