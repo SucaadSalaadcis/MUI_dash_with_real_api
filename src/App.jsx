@@ -13,6 +13,8 @@ import Users from './pages/userManage/Users';
 import Product from './pages/productManage/Product';
 import Agent from './pages/agentManage/Agent';
 import Customer from './pages/customerManage/Customer';
+import PermissionEdit from './pages/permissionManage/PermissionEdit';
+import AgentEdit from './pages/agentManage/AgentEdit';
 
 export default function App() {
   return (
@@ -26,10 +28,12 @@ export default function App() {
           <Route path='/sign_up' element={<Sign_up />} />
           <Route path='/sign_in' element={<Sign_in />} />
           <Route path='/user_management/permission' element={<Permission />} />
+          <Route path='/permission/:id' element={<PermissionEdit />} />
           <Route path='/user_management/roles' element={<Role />} />
           <Route path='/user_management/users' element={<Users />} />
           <Route path='/products' element={<Product />} />
           <Route path='/agents' element={<Agent />} />
+          <Route path='/agent/:id' element={<AgentEdit />} />
           <Route path='/customers' element={<Customer />} />
         </Routes>
       </B>

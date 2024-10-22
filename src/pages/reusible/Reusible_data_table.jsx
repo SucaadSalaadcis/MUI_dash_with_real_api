@@ -3,9 +3,19 @@ import { DataGrid } from '@mui/x-data-grid';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { GridLoader } from 'react-spinners';
-import { Box, Button, Typography, Paper, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+import { Box, Button, Typography, Paper, FormControl, InputLabel, Select, MenuItem, IconButton } from '@mui/material';
+import Swal from 'sweetalert2';
+import EditIcon from '@mui/icons-material/Edit';
 
-const Reusible_data_table = ({ apiUrl, columns, title, }) => {
+import DeleteIcon from '@mui/icons-material/Delete';
+import { Link, useLocation } from 'react-router-dom';
+
+
+
+const Reusible_data_table = ({ apiUrl, columns, title }) => {
+
+    const location = useLocation();
+
     const [rows, setRows] = useState([]);
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
@@ -14,6 +24,7 @@ const Reusible_data_table = ({ apiUrl, columns, title, }) => {
 
     const getToken = () => Cookies.get('token');
 
+    // get all data
     const fetchData = async (page = 1) => {
         try {
             setLoading(true);
@@ -36,10 +47,74 @@ const Reusible_data_table = ({ apiUrl, columns, title, }) => {
         }
     };
 
+    // delete data 
+    const handleDelete = (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete(`${apiUrl}/${id}`, {
+                    headers: {
+                        'Authorization': `Bearer ${getToken()}`,
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                }).then(() => {
+                    fetchData();
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Your data has been deleted.",
+                        icon: "success"
+                    });
+                }).catch((error) => {
+                    console.log("Error deleting the record: ", error);
+                });
+            }
+        });
+    };
+
+
+
 
     useEffect(() => {
         fetchData(currentPage);
     }, [currentPage, apiUrl, pageSize]);
+
+    // Add a custom action column
+    const actionColumn = {
+        field: 'actions',
+        headerName: 'Actions',
+        renderCell: (params) => (
+            <>
+                <IconButton aria-label="delete"
+                    onClick={() => handleDelete(params.row.id)}
+                >
+                    <DeleteIcon style={{ color: "#E53270" }} />
+                </IconButton>
+
+                {
+                location.pathname === '/user_management/permission' ? <Link to={`/permission/${params.row.id}`}>
+                        <EditIcon style={{ color: "blue" }} />
+                </Link> :  location.pathname === '/agents' ? <Link to={`/agent/${params.row.id}`}>
+                        <EditIcon style={{ color: "blue" }} />
+                </Link> : ""
+                
+                }
+
+                {/* <Link to={`/permission/${params.row.id}`}>
+                    <IconButton aria-label="edit">
+                        <EditIcon style={{ color: "blue" }} />
+                    </IconButton>
+                </Link> */}
+
+            </>
+        ),
+    };
 
 
     // Handle pageSize change from the <Select> input
@@ -51,7 +126,7 @@ const Reusible_data_table = ({ apiUrl, columns, title, }) => {
     return (
         <Paper elevation={3} style={{ padding: '70px', borderRadius: '8px' }}>
 
-
+            {/* select page size */}
             <FormControl variant="standard" sx={{ margin: 1, width: 120 }} >
                 <InputLabel id="page-size-label">Page Size</InputLabel>
                 <Select
@@ -75,14 +150,17 @@ const Reusible_data_table = ({ apiUrl, columns, title, }) => {
                 {title} Data Table
             </Typography>
 
+            {/* loading */}
             {loading ? (
                 <GridLoader color="#E53270" loading={loading} size={15} />
             ) : (
                 <>
+                    {/* data grid */}
                     <div style={{ height: '100vh', width: '100%' }}>
                         <DataGrid
                             rows={rows}
-                            columns={columns}
+                            // columns={columns}
+                            columns={[...columns, actionColumn]}
                             loading={loading}
                             pagination={false}
                             hideFooter
