@@ -118,7 +118,6 @@ export default function Customer() {
                         <li class="nav-item">
                             <Link to={'/customers'} class="nav-link text-white active bg-gradient-primary" >
                                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                                    {/* <i class="material-icons opacity-10">assignment</i> */}
                                     <FaceIcon />
                                 </div>
                                 <span class="nav-link-text ms-1">Customers</span>
