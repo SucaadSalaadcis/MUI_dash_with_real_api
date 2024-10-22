@@ -3,20 +3,21 @@ import { DataGrid } from '@mui/x-data-grid';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { GridLoader } from 'react-spinners';
-import { Box, Button, Typography, Paper } from '@mui/material';
+import { Box, Button, Typography, Paper, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 
-const Reusible_data_table = ({ apiUrl, columns, title }) => {
+const Reusible_data_table = ({ apiUrl, columns, title, }) => {
     const [rows, setRows] = useState([]);
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
+    const [pageSize, setPageSize] = useState(10); // Default page size
 
     const getToken = () => Cookies.get('token');
 
     const fetchData = async (page = 1) => {
         try {
             setLoading(true);
-            const response = await axios.get(`${apiUrl}?page=${page}`, {
+            const response = await axios.get(`${apiUrl}?page=${page}&limit=${pageSize}`, {
                 headers: {
                     'Authorization': `Bearer ${getToken()}`,
                     'Content-Type': 'application/x-www-form-urlencoded',
@@ -35,12 +36,40 @@ const Reusible_data_table = ({ apiUrl, columns, title }) => {
         }
     };
 
+
     useEffect(() => {
         fetchData(currentPage);
-    }, [currentPage, apiUrl]);
+    }, [currentPage, apiUrl, pageSize]);
+
+
+    // Handle pageSize change from the <Select> input
+    const handlePageSizeChange = (event) => {
+        setPageSize(event.target.value);
+    };
+
 
     return (
         <Paper elevation={3} style={{ padding: '70px', borderRadius: '8px' }}>
+
+
+            <FormControl variant="standard" sx={{ margin: 1, width: 120 }} >
+                <InputLabel id="page-size-label">Page Size</InputLabel>
+                <Select
+                    labelId="page-size-label"
+                    id="page-size"
+                    value={pageSize}
+                    onChange={handlePageSizeChange}
+                    label="Page Size"
+                >
+                    <MenuItem value="">
+                        <em>None</em>
+                    </MenuItem>
+                    <MenuItem value={5}>5</MenuItem>
+                    <MenuItem value={10}>10</MenuItem>
+                    <MenuItem value={20}>20</MenuItem>
+                    <MenuItem value={50}>50</MenuItem>
+                </Select>
+            </FormControl>
 
             <Typography variant="h5" gutterBottom style={{ textAlign: 'center' }}>
                 {title} Data Table
@@ -50,7 +79,7 @@ const Reusible_data_table = ({ apiUrl, columns, title }) => {
                 <GridLoader color="#E53270" loading={loading} size={15} />
             ) : (
                 <>
-                    <div style={{ height: '100%', width: '100%', marginBottom: '20px' }}>
+                    <div style={{ height: '100vh', width: '100%' }}>
                         <DataGrid
                             rows={rows}
                             columns={columns}
