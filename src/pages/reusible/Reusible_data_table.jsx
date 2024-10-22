@@ -78,11 +78,11 @@ const Reusible_data_table = ({ apiUrl, columns, title }) => {
                                     fontSize: '17px',
                                     color: '#E53270'
                                 },
-                                '& .MuiDataGrid-cell': {
-                                    display: 'flex',        // Make the cell a flex container
-                                    justifyContent: 'start',  // Center horizontally
-                                    alignItems: 'center',      // Center vertically
-                                },
+                                // '& .MuiDataGrid-cell': {
+                                //     display: 'flex',        // Make the cell a flex container
+                                //     justifyContent: 'start',  // Center horizontally
+                                //     alignItems: 'center',      // Center vertically
+                                // },
 
 
                             }}

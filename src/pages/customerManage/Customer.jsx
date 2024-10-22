@@ -256,7 +256,7 @@ export default function Customer() {
                         {/* <div class="col-lg-8 col-md-10 mx-auto"> */}
                         {/* content page */}
                         <Reusible_data_table
-                            apiUrl="http://spiky-crater-dep2vxlep8.ploi.online/api/v1/customers"
+                            apiUrl="https://spiky-crater-dep2vxlep8.ploi.online/api/v1/customers"
                             columns={custColumns}
                             title={'Customers'}
                         />

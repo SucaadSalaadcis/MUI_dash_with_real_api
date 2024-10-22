@@ -4,6 +4,7 @@ import Cookies from 'js-cookie';
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 import Inventory2Icon from '@mui/icons-material/Inventory2';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
+import FaceIcon from '@mui/icons-material/Face';
 
 export default function Index() {
 
@@ -107,7 +108,7 @@ export default function Index() {
                             <Link to={'/agents'} class="nav-link text-white" >
                                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                                     {/* <i class="material-icons opacity-10">assignment</i> */}
-                                    <SupportAgentIcon />
+                                    <FaceIcon/>
                                 </div>
                                 <span class="nav-link-text ms-1">Agents</span>
                             </Link>
