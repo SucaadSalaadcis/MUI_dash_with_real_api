@@ -106,12 +106,6 @@ const Reusible_data_table = ({ apiUrl, columns, title }) => {
                 
                 }
 
-                {/* <Link to={`/permission/${params.row.id}`}>
-                    <IconButton aria-label="edit">
-                        <EditIcon style={{ color: "blue" }} />
-                    </IconButton>
-                </Link> */}
-
             </>
         ),
     };
