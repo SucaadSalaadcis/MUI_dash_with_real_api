@@ -29,6 +29,7 @@ import UserView from './pages/userManage/UserView';
 import RoleView from './pages/roles/RoleView';
 import OrderView from './pages/orderManage/OrderView';
 import AgentPost from './pages/agentManage/AgentPost';
+import CustomerPost from './pages/customerManage/CustomerPost';
 
 export default function App() {
   return (
@@ -66,6 +67,7 @@ export default function App() {
           <Route path='/customers' element={<Customer />} />
           <Route path='/customer/:id' element={<CustomerEdit />} />
           <Route path='/customer_view/:id' element={<CustomerView />} />
+          <Route path='/cust_post' element={<CustomerPost />} />
 
           <Route path='/orders' element={<Order />} />
           <Route path='/order/:id' element={<OrderEdit />} />

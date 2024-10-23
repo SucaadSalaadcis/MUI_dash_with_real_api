@@ -1,24 +1,54 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-
-import Reusible_data_table from '../reusible/Reusible_data_table';
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 import Inventory2Icon from '@mui/icons-material/Inventory2';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 import PeopleIcon from '@mui/icons-material/People';
+
+import { Box, Button, FormControl, Paper, TextField, Typography } from '@mui/material';
+import Cookies from 'js-cookie';
+import axios from 'axios';
+import toast from 'react-hot-toast';
+import AddIcon from '@mui/icons-material/Add';
+
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 
-import AddBoxIcon from '@mui/icons-material/AddBox';
 
-export default function Customer() {
+export default function CustomerPost() {
 
-    const custColumns = [
-        { field: 'id', headerName: 'ID', width: 150 },
-        { field: 'fullname', headerName: 'Full Name', width: 150 },
-        { field: 'phone', headerName: 'Phone', width: 150 },
-        { field: 'agency_id', headerName: 'Agency ID', width: 150 },
-    ];
+
+    const [fullname, setFullName] = useState("");
+    const [phone, setPhone] = useState("");
+    const [address, setAddress] = useState("");
+    const [agency_id, setagency_id] = useState("");
+
+    const navigate = useNavigate();
+
+    const getToken = () => {
+        return Cookies.get('token');
+    };
+    // post
+    const handlePost = async (e) => {
+        e.preventDefault();
+        const data = {
+            fullname, phone, address, agency_id
+        }
+
+        const response = await axios.post("https://spiky-crater-dep2vxlep8.ploi.online/api/v1/customers", data, {
+            headers: {
+                'Authorization': `Bearer ${getToken()}`,
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+        }).then((response) => {
+            if (response.data) {
+                toast.success('Registered Successfuly...')
+                navigate('/customers')
+            }
+
+        }).catch((error) => console.log(error));
+    }
+
 
 
 
@@ -122,6 +152,7 @@ export default function Customer() {
                         <li class="nav-item">
                             <Link to={'/customers'} class="nav-link text-white active bg-gradient-primary" >
                                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                                    {/* <i class="material-icons opacity-10">assignment</i> */}
                                     <PeopleIcon />
                                 </div>
                                 <span class="nav-link-text ms-1">Customers</span>
@@ -152,9 +183,9 @@ export default function Customer() {
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                                 <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
-                                <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Customers</li>
+                                <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Customer Post</li>
                             </ol>
-                            <h6 class="font-weight-bolder mb-0">Customers</h6>
+                            <h6 class="font-weight-bolder mb-0">Customer Post</h6>
                         </nav>
                         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                             <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -261,22 +292,56 @@ export default function Customer() {
                         </div>
                     </div>
                 </nav>
-                {/* post icon */}
-                <Link to={'/cust_post'} >
-                    <AddBoxIcon sx={{ fontSize: '60px', color: '#E53270' }} />
-                </Link>
+
                 {/* <!-- End Navbar --> */}
                 <div class="container-fluid py-4">
                     <div class="row">
-                        {/* <div class="col-lg-8 col-md-10 mx-auto"> */}
-                        {/* content page */}
-                        <Reusible_data_table
-                            apiUrl="https://spiky-crater-dep2vxlep8.ploi.online/api/v1/customers"
-                            columns={custColumns}
-                            title={'Customers'}
-                        />
+                        <div class="col-lg-8 col-md-10 mx-auto">
+                            <Paper elevation={3} style={{ padding: '70px', borderRadius: '8px' }}>
+                                {/* content page */}
+                                <Typography sx={{ fontWeight: 'bold', marginBottom: '20px', textAlign: 'center' }}>Customer Post Form</Typography>
+                                <FormControl variant="standard" sx={{ margin: 1, width: "100%", gap: '10px' }} >
+                                    <TextField
+                                        required
+                                        id="outlined-required"
+                                        label="Full Name"
+                                        value={fullname}
+                                        onChange={(e) => setFullName(e.target.value)}
+                                    />
+                                    <TextField
+                                        required
+                                        id="outlined-required"
+                                        label="Phone"
+                                        value={phone}
+                                        onChange={(e) => setPhone(e.target.value)}
+                                    />
+                                    <TextField
+                                        required
+                                        id="outlined-required"
+                                        label="Address"
+                                        value={address}
+                                        onChange={(e) => setAddress(e.target.value)}
+                                    />
+                                    <TextField
+                                        required
+                                        id="outlined-required"
+                                        label="Agency ID"
+                                        value={agency_id}
+                                        onChange={(e) => setagency_id(e.target.value)}
+                                    />
+                                </FormControl>
+                                <Box display="flex" justifyContent="flex-end" mt={2}>
+                                    <Button variant="contained"
+                                        startIcon={<AddIcon />}
+                                        style={{ backgroundColor: '#E53270', paddingRight: '25px', }}
+                                        onClick={handlePost}
+                                    >
+                                        Post
+                                    </Button>
+                                </Box>
 
-                        {/* </div> */}
+                            </Paper>
+                        </div>
                     </div>
 
                     <div class="position-fixed bottom-1 end-1 z-index-2">
