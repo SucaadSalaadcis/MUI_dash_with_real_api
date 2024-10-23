@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 import Inventory2Icon from '@mui/icons-material/Inventory2';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
-import FaceIcon from '@mui/icons-material/Face';
+import PeopleIcon from '@mui/icons-material/People';
 
 export default function Virtual_reality() {
   return (
@@ -204,6 +204,7 @@ export default function Virtual_reality() {
                   <span class="nav-link-text ms-1">Users</span>
                 </Link>
               </li>
+              <hr />
               <li class="nav-item">
                 <Link to={'/products'} class="nav-link text-white" >
                   <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -226,7 +227,7 @@ export default function Virtual_reality() {
                 <Link to={'/customers'} class="nav-link text-white" >
                   <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                     {/* <i class="material-icons opacity-10">assignment</i> */}
-                    <FaceIcon />
+                    <PeopleIcon />
                   </div>
                   <span class="nav-link-text ms-1">Customers</span>
                 </Link>
