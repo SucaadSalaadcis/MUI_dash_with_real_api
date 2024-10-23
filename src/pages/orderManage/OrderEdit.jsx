@@ -280,7 +280,7 @@ export default function OrderEdit() {
                                 <span class="nav-link-text ms-1">Users</span>
                             </Link>
                         </li>
-                        <hr/>
+                        <hr />
                         <li class="nav-item">
                             <Link to={'/products'} class="nav-link text-white" >
                                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -458,38 +458,42 @@ export default function OrderEdit() {
                                 <Select options={productPrices.map(price => ({ value: price.id, label: `${price.price}` }))} value={selectedProductPrice} onChange={setSelectedProductPrice} />
                                 <Select options={productCommisions.map(comm => ({ value: comm.id, label: `${comm.commission}` }))} value={selectedProductCommision} onChange={setSelectedProductCommision} />
 
+                                <Box>Product_price_id</Box>
                                 <TextField
                                     required
                                     id="outlined-required"
-                                    label="Product_price_id"
                                     value={selectedProduct_price_id}
                                     onChange={(e) => setSelectedProduct_price_id(e.target.value)}
                                 />
+
+                                <Box>Product_commission_id</Box>
                                 <TextField
                                     required
                                     id="outlined-required"
-                                    label="Product_commission_id"
                                     value={selectedProduct_commission_id}
                                     onChange={(e) => setSelectedProduct_commission_id(e.target.value)}
                                 />
+
+                                <Box>Product_id</Box>
                                 <TextField
                                     required
                                     id="outlined-required"
-                                    label="Product_id"
                                     value={selectProduct_id}
                                     onChange={(e) => setSelectedProduct_id(e.target.value)}
                                 />
+
+                                <Box>Owner_id</Box>
                                 <TextField
                                     required
                                     id="outlined-required"
-                                    label="Owner_id"
                                     value={ownerId}
                                     onChange={(e) => setOwnerId(e.target.value)}
                                 />
+
+                                <Box>Status</Box>
                                 <TextField
                                     required
                                     id="outlined-required"
-                                    label="Status"
                                     value={selectStatus}
                                     onChange={(e) => setSelectedStatus(e.target.value)}
                                 />

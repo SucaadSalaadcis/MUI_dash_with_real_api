@@ -14,7 +14,7 @@ import Inventory2Icon from '@mui/icons-material/Inventory2';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 import PeopleIcon from '@mui/icons-material/People';
 
-import { FormControl, Paper, TextField, Typography } from '@mui/material';
+import { Box, FormControl, Paper, TextField, Typography } from '@mui/material';
 
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 
@@ -39,7 +39,7 @@ export default function OrderView() {
     const [selectedProductCommision, setSelectedProductCommision] = useState(null);
 
     const [selectStatus, setSelectedStatus] = useState('');
- 
+
 
 
     const params = useParams();
@@ -117,9 +117,9 @@ export default function OrderView() {
                     setSelectedProductCommision(null);
                 }
 
-        
+
                 setSelectedStatus(order?.status_label || '');
-             
+
 
             } catch (err) {
                 console.error('Error fetching order:', err);
@@ -210,7 +210,7 @@ export default function OrderView() {
                                 <span class="nav-link-text ms-1">Users</span>
                             </Link>
                         </li>
-                        <hr/>
+                        <hr />
                         <li class="nav-item">
                             <Link to={'/products'} class="nav-link text-white" >
                                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -387,10 +387,10 @@ export default function OrderView() {
                                 <Select options={agents.map(agent => ({ value: agent.id, label: agent.fullname }))} isMulti value={selectedAgent} onChange={setSelectedAgent} />
                                 <Select options={productPrices.map(price => ({ value: price.id, label: `${price.price}` }))} value={selectedProductPrice} onChange={setSelectedProductPrice} />
                                 <Select options={productCommisions.map(comm => ({ value: comm.id, label: `${comm.commission}` }))} value={selectedProductCommision} onChange={setSelectedProductCommision} />
+                                <Box>Status</Box>
                                 <TextField
                                     required
                                     id="outlined-required"
-                                    label="Status"
                                     value={selectStatus}
                                     onChange={(e) => setSelectedStatus(e.target.value)}
                                 />
