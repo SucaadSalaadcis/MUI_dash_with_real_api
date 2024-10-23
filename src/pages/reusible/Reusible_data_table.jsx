@@ -121,6 +121,8 @@ const Reusible_data_table = ({ apiUrl, columns, title }) => {
                         <VisibilityIcon style={{ color: "green", marginLeft: '8px' }} />
                     </Link> : location.pathname === '/agents' ? <Link to={`/agent_view/${params.row.id}`}>
                         <VisibilityIcon style={{ color: "green", marginLeft: '8px' }} />
+                    </Link> : location.pathname === '/products' ? <Link to={`/product_view/${params.row.id}`}>
+                        <VisibilityIcon style={{ color: "green", marginLeft: '8px' }} />
                     </Link> : ""
 
                 }
