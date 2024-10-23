@@ -27,6 +27,7 @@ import ProductView from './pages/productManage/ProductView';
 import CustomerView from './pages/customerManage/CustomerView';
 import UserView from './pages/userManage/UserView';
 import RoleView from './pages/roles/RoleView';
+import OrderView from './pages/orderManage/OrderView';
 
 export default function App() {
   return (
@@ -66,6 +67,7 @@ export default function App() {
 
           <Route path='/orders' element={<Order />} />
           <Route path='/order/:id' element={<OrderEdit />} />
+          <Route path='/order_view/:id' element={<OrderView />} />
         </Routes>
       </B>
 

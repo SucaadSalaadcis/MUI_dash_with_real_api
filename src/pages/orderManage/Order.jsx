@@ -41,7 +41,7 @@ export default function Order() {
             }
         },
         {
-            field: 'product_price', headerName: 'Product_price', width: 130,
+            field: 'product_price', headerName: 'Product_price', width: 111,
             renderCell: (params) => {
                 return (
                     // order.product_price.price 
@@ -51,7 +51,7 @@ export default function Order() {
             }
         },
         {
-            field: 'product_commission', headerName: 'Product_commission', width: 130,
+            field: 'product_commission', headerName: 'Product_commission', width: 111,
             renderCell: (params) => {
                 return (
                     //order.product_commission.commission
