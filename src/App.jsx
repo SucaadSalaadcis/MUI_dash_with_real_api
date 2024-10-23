@@ -32,6 +32,7 @@ import AgentPost from './pages/agentManage/AgentPost';
 import CustomerPost from './pages/customerManage/CustomerPost';
 import OrderPost from './pages/orderManage/OrderPost';
 import PermissionPost from './pages/permissionManage/PermissionPost';
+import ProductPost from './pages/productManage/ProductPost';
 
 export default function App() {
   return (
@@ -62,6 +63,7 @@ export default function App() {
           <Route path='/products' element={<Product />} />
           <Route path='/product/:id' element={<ProductEdit />} />
           <Route path='/product_view/:id' element={<ProductView />} />
+          <Route path='/product_post' element={<ProductPost />} />
 
           <Route path='/agents' element={<Agent />} />
           <Route path='/agent/:id' element={<AgentEdit />} />
