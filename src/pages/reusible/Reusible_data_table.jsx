@@ -9,7 +9,7 @@ import EditIcon from '@mui/icons-material/Edit';
 
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Link, useLocation } from 'react-router-dom';
-
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
 
 const Reusible_data_table = ({ apiUrl, columns, title }) => {
@@ -89,6 +89,7 @@ const Reusible_data_table = ({ apiUrl, columns, title }) => {
     const actionColumn = {
         field: 'actions',
         headerName: 'Actions',
+        width: 150,
         renderCell: (params) => (
             <>
                 <IconButton aria-label="delete"
@@ -112,6 +113,12 @@ const Reusible_data_table = ({ apiUrl, columns, title }) => {
                         <EditIcon style={{ color: "blue" }} />
                     </Link> : location.pathname === '/orders' ? <Link to={`/order/${params.row.id}`}>
                         <EditIcon style={{ color: "blue" }} />
+                    </Link> : ""
+
+                }
+                {
+                    location.pathname === '/user_management/permission' ? <Link to={`/permissionView/${params.row.id}`}>
+                        <VisibilityIcon style={{ color: "green", marginLeft: '8px' }} />
                     </Link> : ""
 
                 }

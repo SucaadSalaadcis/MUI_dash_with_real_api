@@ -21,6 +21,7 @@ import RoleEdit from './pages/roles/RoleEdit';
 import UserEdit from './pages/userManage/UserEdit';
 import Order from './pages/orderManage/Order';
 import OrderEdit from './pages/orderManage/OrderEdit';
+import PermissionView from './pages/permissionManage/PermissionVeiw';
 
 export default function App() {
   return (
@@ -35,6 +36,7 @@ export default function App() {
           <Route path='/sign_in' element={<Sign_in />} />
           <Route path='/user_management/permission' element={<Permission />} />
           <Route path='/permission/:id' element={<PermissionEdit />} />
+          <Route path='/permissionView/:id' element={<PermissionView />} />
           <Route path='/user_management/roles' element={<Role />} />
           <Route path='/role/:id' element={<RoleEdit />} />
           <Route path='/user_management/users' element={<Users />} />
