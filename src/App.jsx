@@ -21,7 +21,8 @@ import RoleEdit from './pages/roles/RoleEdit';
 import UserEdit from './pages/userManage/UserEdit';
 import Order from './pages/orderManage/Order';
 import OrderEdit from './pages/orderManage/OrderEdit';
-import PermissionView from './pages/permissionManage/PermissionVeiw';
+import PermissionView from './pages/permissionManage/PermissionView';
+import AgentView from './pages/agentManage/AgentView';
 
 export default function App() {
   return (
@@ -36,7 +37,7 @@ export default function App() {
           <Route path='/sign_in' element={<Sign_in />} />
           <Route path='/user_management/permission' element={<Permission />} />
           <Route path='/permission/:id' element={<PermissionEdit />} />
-          <Route path='/permissionView/:id' element={<PermissionView />} />
+          <Route path='/permission_view/:id' element={<PermissionView />} />
           <Route path='/user_management/roles' element={<Role />} />
           <Route path='/role/:id' element={<RoleEdit />} />
           <Route path='/user_management/users' element={<Users />} />
@@ -45,6 +46,7 @@ export default function App() {
           <Route path='/product/:id' element={<ProductEdit />} />
           <Route path='/agents' element={<Agent />} />
           <Route path='/agent/:id' element={<AgentEdit />} />
+          <Route path='/agent_view/:id' element={<AgentView />} />
           <Route path='/customers' element={<Customer />} />
           <Route path='/customer/:id' element={<CustomerEdit />} />
           <Route path='/orders' element={<Order />} />

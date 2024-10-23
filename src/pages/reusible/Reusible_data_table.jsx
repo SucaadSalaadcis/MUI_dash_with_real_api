@@ -117,7 +117,9 @@ const Reusible_data_table = ({ apiUrl, columns, title }) => {
 
                 }
                 {
-                    location.pathname === '/user_management/permission' ? <Link to={`/permissionView/${params.row.id}`}>
+                    location.pathname === '/user_management/permission' ? <Link to={`/permission_view/${params.row.id}`}>
+                        <VisibilityIcon style={{ color: "green", marginLeft: '8px' }} />
+                    </Link> : location.pathname === '/agents' ? <Link to={`/agent_view/${params.row.id}`}>
                         <VisibilityIcon style={{ color: "green", marginLeft: '8px' }} />
                     </Link> : ""
 
