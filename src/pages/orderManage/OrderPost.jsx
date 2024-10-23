@@ -16,6 +16,7 @@ import PeopleIcon from '@mui/icons-material/People';
 import { Box, Button, FormControl, Paper, TextField, Typography } from '@mui/material';
 
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
+import BackIcon from "../reusible/BackIcon";
 
 export default function OrderPost() {
 
@@ -389,6 +390,7 @@ export default function OrderPost() {
                     <div class="row">
                         {/* <div class="col-lg-8 col-md-10 mx-auto"> */}
                         {/* content page */}
+                        <BackIcon pathUrl={'/orders'} />
                         <Paper elevation={3} style={{ padding: '70px', borderRadius: '8px' }}>
                             {/* content page */}
                             <Typography sx={{ fontWeight: 'bold', marginBottom: '20px', textAlign: 'center' }}>Order Post Form</Typography>

@@ -12,6 +12,7 @@ import axios from 'axios';
 
 import Select from 'react-select';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
+import BackIcon from '../reusible/BackIcon';
 
 
 
@@ -77,7 +78,7 @@ export default function RoleView() {
     }, []);
 
 
- 
+
 
     return (
         <body class="g-sidenav-show  bg-gray-200">
@@ -324,6 +325,7 @@ export default function RoleView() {
                 <div class="container-fluid py-4">
                     <div class="row">
                         <div class="col-lg-8 col-md-10 mx-auto">
+                            <BackIcon pathUrl={'/user_management/roles'} />
                             <Paper elevation={3} style={{ padding: '70px', borderRadius: '8px' }}>
                                 {/* content page */}
                                 <Typography sx={{ fontWeight: 'bold', marginBottom: '20px', textAlign: 'center' }}>Role View Form</Typography>

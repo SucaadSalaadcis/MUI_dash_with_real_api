@@ -12,6 +12,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 import AddIcon from '@mui/icons-material/Add';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
+import BackIcon from '../reusible/BackIcon';
 
 
 export default function PermissionPost() {
@@ -293,6 +294,7 @@ export default function PermissionPost() {
                 <div class="container-fluid py-4">
                     <div class="row">
                         <div class="col-lg-8 col-md-10 mx-auto">
+                            <BackIcon pathUrl={'/user_management/permission'}/>
                             <Paper elevation={3} style={{ padding: '70px', borderRadius: '8px' }}>
                                 {/* content page */}
                                 <Typography sx={{ fontWeight: 'bold', marginBottom: '20px', textAlign: 'center' }}>Permission Post Form</Typography>

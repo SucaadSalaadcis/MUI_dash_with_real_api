@@ -11,6 +11,7 @@ import Cookies from 'js-cookie';
 import axios from 'axios';
 
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
+import BackIcon from '../reusible/BackIcon';
 
 
 
@@ -37,7 +38,7 @@ export default function UserView() {
             },
         }).then(res => {
             setName(res.data.data.name);
-            setEmail(res.data.data.email); 
+            setEmail(res.data.data.email);
             setId(res.data.data.id);
             // console.log(res.data.data.title);
         }).catch(err => console.log(err));
@@ -295,6 +296,7 @@ export default function UserView() {
                 <div class="container-fluid py-4">
                     <div class="row">
                         <div class="col-lg-8 col-md-10 mx-auto">
+                            <BackIcon pathUrl={'/user_management/users'} />
                             <Paper elevation={3} style={{ padding: '70px', borderRadius: '8px' }}>
                                 {/* content page */}
                                 <Typography sx={{ fontWeight: 'bold', marginBottom: '20px', textAlign: 'center' }}>User View Form</Typography>

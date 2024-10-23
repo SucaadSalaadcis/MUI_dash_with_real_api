@@ -13,6 +13,7 @@ import AddIcon from '@mui/icons-material/Add';
 
 
 import Cookies from 'js-cookie';
+import BackIcon from '../reusible/BackIcon';
 
 
 
@@ -287,6 +288,7 @@ export default function AgentPost() {
                 <div class="container-fluid py-4">
                     <div class="row">
                         <div class="col-lg-8 col-md-10 mx-auto">
+                            <BackIcon pathUrl={'/agents'} />
                             <Paper elevation={3} style={{ padding: '70px', borderRadius: '8px' }}>
                                 {/* content page */}
                                 <Typography sx={{ fontWeight: 'bold', marginBottom: '20px', textAlign: 'center' }}>Agent Post Form</Typography>

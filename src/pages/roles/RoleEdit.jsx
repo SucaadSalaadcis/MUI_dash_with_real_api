@@ -13,6 +13,7 @@ import toast from 'react-hot-toast';
 import EditIcon from '@mui/icons-material/Edit';
 import Select from 'react-select';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
+import BackIcon from '../reusible/BackIcon';
 
 
 
@@ -347,6 +348,7 @@ export default function RoleEdit() {
                 <div class="container-fluid py-4">
                     <div class="row">
                         <div class="col-lg-8 col-md-10 mx-auto">
+                            <BackIcon pathUrl={'/user_management/roles'} />
                             <Paper elevation={3} style={{ padding: '70px', borderRadius: '8px' }}>
                                 {/* content page */}
                                 <Typography sx={{ fontWeight: 'bold', marginBottom: '20px', textAlign: 'center' }}>Role Edit Form</Typography>

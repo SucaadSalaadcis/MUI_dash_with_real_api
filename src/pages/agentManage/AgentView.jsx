@@ -11,6 +11,7 @@ import Cookies from 'js-cookie';
 import axios from 'axios';
 
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
+import BackIcon from '../reusible/BackIcon';
 
 
 export default function AgentView() {
@@ -27,7 +28,7 @@ export default function AgentView() {
     const [id, setId] = useState("");
 
     const params = useParams();
-    
+
     // get single data 
     const handleSingleData = () => {
         axios.get(`https://spiky-crater-dep2vxlep8.ploi.online/api/v1/agents/${params.id}/edit`, {
@@ -298,6 +299,7 @@ export default function AgentView() {
                 <div class="container-fluid py-4">
                     <div class="row">
                         <div class="col-lg-8 col-md-10 mx-auto">
+                            <BackIcon pathUrl={'/agents'} />
                             <Paper elevation={3} style={{ padding: '70px', borderRadius: '8px' }}>
                                 {/* content page */}
                                 <Typography sx={{ fontWeight: 'bold', marginBottom: '20px', textAlign: 'center' }}>Agent View Form</Typography>
