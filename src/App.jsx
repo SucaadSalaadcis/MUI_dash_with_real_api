@@ -34,6 +34,7 @@ import OrderPost from './pages/orderManage/OrderPost';
 import PermissionPost from './pages/permissionManage/PermissionPost';
 import ProductPost from './pages/productManage/ProductPost';
 import RolePost from './pages/roles/RolePost';
+import UserPost from './pages/userManage/UserPost';
 
 export default function App() {
   return (
@@ -61,6 +62,7 @@ export default function App() {
           <Route path='/user_management/users' element={<Users />} />
           <Route path='/users/:id' element={<UserEdit />} />
           <Route path='/users_view/:id' element={<UserView />} />
+          <Route path='/user_post' element={<UserPost />} />
 
           <Route path='/products' element={<Product />} />
           <Route path='/product/:id' element={<ProductEdit />} />
