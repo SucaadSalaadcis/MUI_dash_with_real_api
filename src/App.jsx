@@ -19,6 +19,7 @@ import CustomerEdit from './pages/customerManage/CustomerEdit';
 import ProductEdit from './pages/productManage/ProductEdit';
 import RoleEdit from './pages/roles/RoleEdit';
 import UserEdit from './pages/userManage/UserEdit';
+import Order from './pages/orderManage/Order';
 
 export default function App() {
   return (
@@ -43,6 +44,7 @@ export default function App() {
           <Route path='/agent/:id' element={<AgentEdit />} />
           <Route path='/customers' element={<Customer />} />
           <Route path='/customer/:id' element={<CustomerEdit />} />
+          <Route path='/orders' element={<Order />} />
         </Routes>
       </B>
 

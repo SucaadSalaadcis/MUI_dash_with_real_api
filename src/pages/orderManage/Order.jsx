@@ -1,22 +1,80 @@
-import React from 'react'
+
 import { Link } from 'react-router-dom'
 
-import Reusible_data_table from '../reusible/Reusible_data_table';
 
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 import Inventory2Icon from '@mui/icons-material/Inventory2';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
-import PeopleIcon from '@mui/icons-material/People';
+import FaceIcon from '@mui/icons-material/Face';
+import { Button } from '@mui/material';
+
+import Reusible_data_table from '../reusible/Reusible_data_table';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 
+export default function Order() {
 
-export default function Users() {
+    const OrderColumns = [
+        {
+            field: 'product', headerName: 'Product', width: 130,
+            renderCell: (params) => {
+                return (
+                    params.row.product?.name || <Button variant="contained" size='small' sx={{ borderRadius: '5%', backgroundColor: '#E53270' }}> Not Assigned </Button>
+                )
+            }
+        },
+        {
+            field: 'customer', headerName: 'Customer', width: 150,
+            renderCell: (params) => {
+                return (
+                    params.row.customer[0]?.fullname ||
+                    <Button variant="contained" size='small' sx={{ borderRadius: '5%', backgroundColor: '#E53270' }}> Not Assigned </Button>
+                )
+            }
+        },
+        {
+            field: 'agent', headerName: 'Agent', width: 150,
+            renderCell: (params) => {
+                return (
+                    params.row.agent[0]?.fullname ||
+                    <Button variant="contained" size='small' sx={{ borderRadius: '5%', backgroundColor: '#E53270' }}> Not Assigned </Button>
+                )
+            }
+        },
+        {
+            field: 'product_price', headerName: 'Product_price', width: 130,
+            renderCell: (params) => {
+                return (
+                    // order.product_price.price 
+                    params.row.product_price.price ||
+                    <Button variant="contained" size='small' sx={{ borderRadius: '5%', backgroundColor: '#E53270' }}> Not Assigned </Button>
+                )
+            }
+        },
+        {
+            field: 'product_commission', headerName: 'Product_commission', width: 130,
+            renderCell: (params) => {
+                return (
+                    //order.product_commission.commission
+                    params.row.product_commission.commission ||
+                    <Button variant="contained" size='small' sx={{ borderRadius: '5%', backgroundColor: '#E53270' }}> Not Assigned </Button>
+                )
+            }
+        },
+        {
+            field: 'status', headerName: 'Status', width: 100,
+            renderCell: (params) => {
+                return (
+                    //order.status_label
+                    params.row.status_label ||
+                    <Button variant="contained" size='small' sx={{ borderRadius: '5%', backgroundColor: '#E53270' }}> Not Assigned </Button>
+                )
+            }
+        },
 
-    const userColumns = [
-        { field: 'id', headerName: 'ID', width: 150 },
-        { field: 'name', headerName: 'Name', width: 150 },
-        { field: 'email', headerName: 'Email', width: 150 },
+
     ];
+
+
 
     return (
         <body class="g-sidenav-show  bg-gray-200">
@@ -88,7 +146,7 @@ export default function Users() {
                             </Link>
                         </li>
                         <li class="nav-item">
-                            <Link to={'/user_management/users'} class="nav-link text-white active bg-gradient-primary" >
+                            <Link to={'/user_management/users'} class="nav-link text-white" >
                                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                                     {/* <i class="material-icons opacity-10">assignment</i> */}
                                     <CircleOutlinedIcon />
@@ -96,7 +154,6 @@ export default function Users() {
                                 <span class="nav-link-text ms-1">Users</span>
                             </Link>
                         </li>
-                        <hr />
                         <li class="nav-item">
                             <Link to={'/products'} class="nav-link text-white" >
                                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -118,14 +175,13 @@ export default function Users() {
                         <li class="nav-item">
                             <Link to={'/customers'} class="nav-link text-white" >
                                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                                    {/* <i class="material-icons opacity-10">assignment</i> */}
-                                    <PeopleIcon />
+                                    <FaceIcon />
                                 </div>
                                 <span class="nav-link-text ms-1">Customers</span>
                             </Link>
                         </li>
                         <li class="nav-item">
-                            <Link to={'/orders'} class="nav-link text-white" >
+                            <Link to={'/orders'} class="nav-link text-white active bg-gradient-primary" >
                                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                                     {/* <i class="material-icons opacity-10">assignment</i> */}
                                     <ShoppingCartCheckoutIcon />
@@ -133,6 +189,7 @@ export default function Users() {
                                 <span class="nav-link-text ms-1">Orders</span>
                             </Link>
                         </li>
+
                     </ul>
                 </div>
 
@@ -149,9 +206,9 @@ export default function Users() {
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                                 <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
-                                <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Users</li>
+                                <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Orders</li>
                             </ol>
-                            <h6 class="font-weight-bolder mb-0">Users</h6>
+                            <h6 class="font-weight-bolder mb-0">Order</h6>
                         </nav>
                         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                             <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -265,9 +322,9 @@ export default function Users() {
                         {/* <div class="col-lg-8 col-md-10 mx-auto"> */}
                         {/* content page */}
                         <Reusible_data_table
-                            apiUrl="https://spiky-crater-dep2vxlep8.ploi.online/api/v1/users"
-                            columns={userColumns}
-                            title={'Users'}
+                            apiUrl={'https://spiky-crater-dep2vxlep8.ploi.online/api/v1/orders'}
+                            columns={OrderColumns}
+                            title={'Orders'}
                         />
 
                         {/* </div> */}

@@ -11,6 +11,7 @@ import Cookies from 'js-cookie';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import EditIcon from '@mui/icons-material/Edit';
+import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 
 
 export default function AgentEdit() {
@@ -175,6 +176,15 @@ export default function AgentEdit() {
                                 <span class="nav-link-text ms-1">Customers</span>
                             </Link>
                         </li>
+                        <li class="nav-item">
+                            <Link to={'/orders'} class="nav-link text-white" >
+                                <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                                    {/* <i class="material-icons opacity-10">assignment</i> */}
+                                    <ShoppingCartCheckoutIcon />
+                                </div>
+                                <span class="nav-link-text ms-1">Orders</span>
+                            </Link>
+                        </li>
 
                     </ul>
                 </div>
@@ -309,7 +319,7 @@ export default function AgentEdit() {
                             <Paper elevation={3} style={{ padding: '70px', borderRadius: '8px' }}>
                                 {/* content page */}
                                 <Typography sx={{ fontWeight: 'bold', marginBottom: '20px', textAlign: 'center' }}>Agent Edit Form</Typography>
-                                <FormControl variant="standard" sx={{ margin: 1, width: "100%" , gap: '10px'}} >
+                                <FormControl variant="standard" sx={{ margin: 1, width: "100%", gap: '10px' }} >
                                     <TextField
                                         required
                                         id="outlined-required"
