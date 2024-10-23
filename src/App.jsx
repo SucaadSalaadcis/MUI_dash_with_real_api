@@ -31,6 +31,7 @@ import OrderView from './pages/orderManage/OrderView';
 import AgentPost from './pages/agentManage/AgentPost';
 import CustomerPost from './pages/customerManage/CustomerPost';
 import OrderPost from './pages/orderManage/OrderPost';
+import PermissionPost from './pages/permissionManage/PermissionPost';
 
 export default function App() {
   return (
@@ -48,6 +49,7 @@ export default function App() {
           <Route path='/user_management/permission' element={<Permission />} />
           <Route path='/permission/:id' element={<PermissionEdit />} />
           <Route path='/permission_view/:id' element={<PermissionView />} />
+          <Route path='/permission_post' element={<PermissionPost />} />
 
           <Route path='/user_management/roles' element={<Role />} />
           <Route path='/role/:id' element={<RoleEdit />} />
