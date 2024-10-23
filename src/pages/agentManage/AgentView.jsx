@@ -6,7 +6,7 @@ import Inventory2Icon from '@mui/icons-material/Inventory2';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 import PeopleIcon from '@mui/icons-material/People';
 
-import { Box, Button, FormControl, Paper, TextField, Typography } from '@mui/material';
+import { FormControl, Paper, TextField, Typography } from '@mui/material';
 import Cookies from 'js-cookie';
 import axios from 'axios';
 
