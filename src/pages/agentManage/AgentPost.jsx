@@ -14,6 +14,7 @@ import AddIcon from '@mui/icons-material/Add';
 
 import Cookies from 'js-cookie';
 import BackIcon from '../reusible/BackIcon';
+import Logout from '../Logout';
 
 
 
@@ -163,7 +164,7 @@ export default function AgentPost() {
 
                 <div class="sidenav-footer position-absolute w-100 bottom-0 ">
                     <div class="mx-3">
-                        <a class="btn bg-gradient-primary mt-4 w-100" href="https://adwaar.com/" type="button">ADWAAR</a>
+                        <a class="btn bg-gradient-primary mt-4 w-100" type="button"><Logout name={'Logout'} /></a>
                     </div>
                 </div>
             </aside>

@@ -11,6 +11,7 @@ import { Button } from '@mui/material';
 import Reusible_data_table from '../reusible/Reusible_data_table';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 import AddBoxIcon from '@mui/icons-material/AddBox';
+import Logout from '../Logout';
 
 export default function Order() {
 
@@ -197,7 +198,7 @@ export default function Order() {
 
                 <div class="sidenav-footer position-absolute w-100 bottom-0 ">
                     <div class="mx-3">
-                        <a class="btn bg-gradient-primary mt-4 w-100" href="https://adwaar.com/" type="button">ADWAAR</a>
+                        <a class="btn bg-gradient-primary mt-4 w-100" type="button"><Logout name={'Logout'} /></a>
                     </div>
                 </div>
             </aside>

@@ -13,6 +13,7 @@ import toast from 'react-hot-toast';
 import EditIcon from '@mui/icons-material/Edit';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 import BackIcon from '../reusible/BackIcon';
+import Logout from '../Logout';
 
 
 export default function PermissionEdit() {
@@ -185,7 +186,7 @@ export default function PermissionEdit() {
 
                 <div class="sidenav-footer position-absolute w-100 bottom-0 ">
                     <div class="mx-3">
-                        <a class="btn bg-gradient-primary mt-4 w-100" href="https://adwaar.com/" type="button">ADWAAR</a>
+                        <a class="btn bg-gradient-primary mt-4 w-100" type="button"><Logout name={'Logout'} /></a>
                     </div>
                 </div>
             </aside>
@@ -310,7 +311,7 @@ export default function PermissionEdit() {
                 <div class="container-fluid py-4">
                     <div class="row">
                         <div class="col-lg-8 col-md-10 mx-auto">
-                        <BackIcon pathUrl={'/user_management/permission'}/>
+                            <BackIcon pathUrl={'/user_management/permission'} />
                             <Paper elevation={3} style={{ padding: '70px', borderRadius: '8px' }}>
                                 {/* content page */}
                                 <Typography sx={{ fontWeight: 'bold', marginBottom: '20px', textAlign: 'center' }}>Permission Edit Form</Typography>
