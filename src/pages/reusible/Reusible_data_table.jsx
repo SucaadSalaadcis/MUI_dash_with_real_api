@@ -110,6 +110,8 @@ const Reusible_data_table = ({ apiUrl, columns, title }) => {
                         <EditIcon style={{ color: "blue" }} />
                     </Link> : location.pathname === '/user_management/users' ? <Link to={`/users/${params.row.id}`}>
                         <EditIcon style={{ color: "blue" }} />
+                    </Link> : location.pathname === '/orders' ? <Link to={`/order/${params.row.id}`}>
+                        <EditIcon style={{ color: "blue" }} />
                     </Link> : ""
 
                 }
