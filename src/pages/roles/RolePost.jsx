@@ -1,62 +1,108 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-
-import Reusible_data_table from '../reusible/Reusible_data_table';
+import React, { useEffect, useState } from 'react'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
-import { Button, Box } from '@mui/material';
 import Inventory2Icon from '@mui/icons-material/Inventory2';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 import PeopleIcon from '@mui/icons-material/People';
+
+import { Box, Button, FormControl, Paper, TextField, Typography } from '@mui/material';
+import Cookies from 'js-cookie';
+import axios from 'axios';
+import toast from 'react-hot-toast';
+import AddIcon from '@mui/icons-material/Add';
+import Select from 'react-select';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
-import AddBoxIcon from '@mui/icons-material/AddBox';
 
 
-export default function Role() {
 
-    const roleColumns = [
-        { field: 'id', headerName: 'ID', width: 150 },
-        { field: 'title', headerName: 'Title', width: 150 },
-        // { field: 'permissions', headerName: 'Permissions', width: 150 },
-        {
-            field: 'permissions',
-            headerName: 'Permissions',
-            width: 300,
-            renderCell: (params) => (
-                <Box
-                    sx={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        gap: '4px', // Space between buttons
-                        maxHeight: '150px', // Set max height to prevent row overflow
-                        overflowY: 'auto', // Scroll when content exceeds max height
-                        padding: '5px', // Optional padding for better layout
-                        backgroundColor: '#f5f5f5',
-                        borderRadius: '4px',
-                    }}
-                >
-                    {params.value && params.value.length > 0 ? (
-                        params.value.map((permission, index) => (
-                            <Button
-                                key={index}
-                                style={{
-                                    color: 'white',
-                                    border: 'none',
-                                    borderRadius: '20px',
-                                    background: '#E53270',
-                                    padding: '2px 6px',
-                                }}
-                            >
-                                {permission.title}
-                            </Button>
-                        ))
-                    ) : (
-                        <span>No Permissions</span>
-                    )}
-                </Box>
-            ),
-        },
-    ];
+export default function RolePost() {
+
+
+    const [title, setTitle] = useState("");
+
+    const [permissions, setPermissions] = useState([]);
+    const [selectedPermissions, setSelectedPermissions] = useState([]);
+    // console.log(selectedPermissions) ;  tracks the id of every permision [1,2,3] you choose
+
+    const navigate = useNavigate();
+
+
+    const getToken = () => {
+        return Cookies.get('token');
+    };
+
+
+    // get permissions
+    useEffect(() => {
+        const fetchPermissions = async () => {
+            try {
+                const response = await axios.get('https://spiky-crater-dep2vxlep8.ploi.online/api/v1/roles/create', {
+                    headers: {
+                        'Authorization': `Bearer ${getToken()}`,
+                    },
+                });
+                setPermissions(response.data.meta.permissions); // Make sure this is correct
+            } catch (error) {
+                console.error('Error fetching permissions:', error);
+            }
+        };
+
+        fetchPermissions();
+    }, []);
+
+    // Function to get permission title by ID
+    const getPermissionTitle = (id) => {
+        const permission = permissions.find((perm) => perm.id === id);
+        // console.log(permission); {id: 2, title: 'permission_create'}
+        return permission ? permission.title : 'Unknown Permission'; // Handle cases where permission is not found
+    };
+    // console.log(permissions);
+
+    // post 
+    const handlePost = async (e) => {
+        e.preventDefault();
+
+
+        const data = {
+            title: title,
+            permissions: selectedPermissions.map((id) => ({
+                id: id,
+                title: getPermissionTitle(id)
+                // If you call getPermissionTitle(2), it will find the object { id: 2, title: 'permission_create' }.
+
+            })),
+        };
+
+        try {
+            const response = await axios.post(
+                "https://spiky-crater-dep2vxlep8.ploi.online/api/v1/roles",
+                data,
+                {
+                    headers: {
+                        'Authorization': `Bearer ${getToken()}`,
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                }
+            );
+
+            if (response.data) {
+                toast.success('Registered Successfully...');
+                // console.log(response.data.data)
+                //   The optional chaining operator (?.) is used here to safely access the roles property. If response.data.data is undefined or null, the expression will not throw an error and will simply evaluate to undefined. This prevents runtime errors when trying to access properties of undefined
+                const rolesData = response.data.data?.roles || [];
+                navigate('/user_management/roles');
+            }
+        } catch (error) {
+            console.error("Error details:", error.response ? error.response.data : error.message);
+            toast.error('Failed to register. Please try again.');
+        }
+    };
+
+
+
+
+
 
     return (
         <body class="g-sidenav-show  bg-gray-200">
@@ -85,7 +131,7 @@ export default function Role() {
 
                         <li class="nav-item">
                             <Link to={'/virtual_reality'} class="nav-link text-white">
-                                {/* <a class="nav-link text-white " href="./pages/virtual-reality.html"> */}
+
                                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                                     <i class="material-icons opacity-10">view_in_ar</i>
                                 </div>
@@ -118,8 +164,6 @@ export default function Role() {
                                 <span class="nav-link-text ms-1">Permissions</span>
                             </Link>
                         </li>
-
-
                         <li class="nav-item">
                             <Link to={'/user_management/roles'} class="nav-link text-white active bg-gradient-primary" >
                                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -139,7 +183,6 @@ export default function Role() {
                             </Link>
                         </li>
                         <hr />
-
                         <li class="nav-item">
                             <Link to={'/products'} class="nav-link text-white" >
                                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -192,9 +235,9 @@ export default function Role() {
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                                 <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
-                                <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Roles</li>
+                                <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Role Post</li>
                             </ol>
-                            <h6 class="font-weight-bolder mb-0">Roles</h6>
+                            <h6 class="font-weight-bolder mb-0">Role Post</h6>
                         </nav>
                         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                             <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -301,22 +344,65 @@ export default function Role() {
                         </div>
                     </div>
                 </nav>
-                {/* post icon */}
-                <Link to={'/role_post'} >
-                    <AddBoxIcon sx={{ fontSize: '60px', color: '#E53270' }} />
-                </Link>
+
                 {/* <!-- End Navbar --> */}
                 <div class="container-fluid py-4">
                     <div class="row">
-                        {/* <div class="col-lg-8 col-md-10 mx-auto"> */}
-                        {/* content page */}
-                        <Reusible_data_table
-                            apiUrl="https://spiky-crater-dep2vxlep8.ploi.online/api/v1/roles"
-                            columns={roleColumns}
-                            title={'Roles'}
-                        />
+                        <div class="col-lg-8 col-md-10 mx-auto">
+                            <Paper elevation={3} style={{ padding: '70px', borderRadius: '8px' }}>
+                                {/* content page */}
+                                <Typography sx={{ fontWeight: 'bold', marginBottom: '20px', textAlign: 'center' }}>Role Post Form</Typography>
+                                <FormControl variant="standard" sx={{ margin: 1, width: "100%", gap: '10px' }} >
+                                    <TextField
+                                        required
+                                        id="outlined-required"
+                                        label="Title"
+                                        value={title}
+                                        onChange={(e) => setTitle(e.target.value)}
+                                    />
+                                    <Select
+                                        isMulti
+                                        options={permissions.map(permission => ({
+                                            value: permission.id,
+                                            label: permission.title
+                                        }))}
+                                        onChange={(selectedOptions) => {
+                                            setSelectedPermissions(selectedOptions.map(option => option.value)); // Update state with selected IDs
+                                        }}
+                                        value={selectedPermissions.map(id => ({
+                                            value: id,
+                                            label: getPermissionTitle(id) // Ensure the title is fetched correctly
+                                        }))} // This will set the initial value to the current permissions
+                                        placeholder="Select permission(s)"
+                                        styles={{
+                                            control: (base) => ({
+                                                ...base,
+                                                border: '2px solid #6c757d',
+                                                borderRadius: '8px',
+                                                padding: '5px',
+                                            }),
+                                            placeholder: (base) => ({
+                                                ...base,
+                                                color: '#495057',
+                                                fontSize: '16px',
+                                                padding: '8px',
+                                            }),
+                                        }}
+                                    />
 
-                        {/* </div> */}
+                                </FormControl>
+                                <Box display="flex" justifyContent="flex-end" mt={2}>
+                                    <Button variant="contained"
+                                        startIcon={<AddIcon />}
+                                        style={{ backgroundColor: '#E53270', paddingRight: '25px', }}
+                                        onClick={handlePost}
+                                    >
+                                        Post
+                                    </Button>
+                                </Box>
+
+                            </Paper>
+                        </div>
                     </div>
 
                     <div class="position-fixed bottom-1 end-1 z-index-2">

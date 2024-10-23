@@ -33,6 +33,7 @@ import CustomerPost from './pages/customerManage/CustomerPost';
 import OrderPost from './pages/orderManage/OrderPost';
 import PermissionPost from './pages/permissionManage/PermissionPost';
 import ProductPost from './pages/productManage/ProductPost';
+import RolePost from './pages/roles/RolePost';
 
 export default function App() {
   return (
@@ -55,6 +56,7 @@ export default function App() {
           <Route path='/user_management/roles' element={<Role />} />
           <Route path='/role/:id' element={<RoleEdit />} />
           <Route path='/role_view/:id' element={<RoleView />} />
+          <Route path='/role_post' element={<RolePost />} />
 
           <Route path='/user_management/users' element={<Users />} />
           <Route path='/users/:id' element={<UserEdit />} />
