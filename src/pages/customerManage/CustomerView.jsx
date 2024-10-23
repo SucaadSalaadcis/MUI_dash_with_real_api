@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 import Inventory2Icon from '@mui/icons-material/Inventory2';
@@ -27,8 +27,6 @@ export default function CustomerView() {
 
 
     const params = useParams();
-    const navigate = useNavigate();
-
 
     // get single data 
     const handleSingleData = () => {

@@ -13,33 +13,31 @@ import axios from 'axios';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 
 
-export default function AgentView() {
+
+export default function UserView() {
 
     const getToken = () => {
         return Cookies.get('token');
     };
 
 
-    const [fullname, setFullName] = useState("");
-    const [description, setDescription] = useState("");
-    const [business, setBusiness] = useState("");
-    const [phone, setPhone] = useState("");
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
     const [id, setId] = useState("");
 
+
+
     const params = useParams();
-    
     // get single data 
     const handleSingleData = () => {
-        axios.get(`https://spiky-crater-dep2vxlep8.ploi.online/api/v1/agents/${params.id}/edit`, {
+        axios.get(`https://spiky-crater-dep2vxlep8.ploi.online/api/v1/users/${params.id}/edit`, {
             headers: {
                 'Authorization': `Bearer ${getToken()}`,
                 'Content-Type': 'application/x-www-form-urlencoded',
             },
         }).then(res => {
-            setFullName(res.data.data.fullname);
-            setDescription(res.data.data.description);
-            setBusiness(res.data.data.business);
-            setPhone(res.data.data.phone);
+            setName(res.data.data.name);
+            setEmail(res.data.data.email); 
             setId(res.data.data.id);
             // console.log(res.data.data.title);
         }).catch(err => console.log(err));
@@ -122,7 +120,7 @@ export default function AgentView() {
                             </Link>
                         </li>
                         <li class="nav-item">
-                            <Link to={'/user_management/users'} class="nav-link text-white" >
+                            <Link to={'/user_management/users'} class="nav-link text-white active bg-gradient-primary" >
                                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                                     {/* <i class="material-icons opacity-10">assignment</i> */}
                                     <CircleOutlinedIcon />
@@ -141,7 +139,7 @@ export default function AgentView() {
                             </Link>
                         </li>
                         <li class="nav-item">
-                            <Link to={'/agents'} class="nav-link text-white active bg-gradient-primary" >
+                            <Link to={'/agents'} class="nav-link text-white" >
                                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                                     {/* <i class="material-icons opacity-10">assignment</i> */}
                                     <SupportAgentIcon />
@@ -167,7 +165,6 @@ export default function AgentView() {
                                 <span class="nav-link-text ms-1">Orders</span>
                             </Link>
                         </li>
-
                     </ul>
                 </div>
 
@@ -184,9 +181,9 @@ export default function AgentView() {
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                                 <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
-                                <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Agent View</li>
+                                <li class="breadcrumb-item text-sm text-dark active" aria-current="page">User View</li>
                             </ol>
-                            <h6 class="font-weight-bolder mb-0">Agent View</h6>
+                            <h6 class="font-weight-bolder mb-0">User View</h6>
                         </nav>
                         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                             <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -300,7 +297,7 @@ export default function AgentView() {
                         <div class="col-lg-8 col-md-10 mx-auto">
                             <Paper elevation={3} style={{ padding: '70px', borderRadius: '8px' }}>
                                 {/* content page */}
-                                <Typography sx={{ fontWeight: 'bold', marginBottom: '20px', textAlign: 'center' }}>Agent View Form</Typography>
+                                <Typography sx={{ fontWeight: 'bold', marginBottom: '20px', textAlign: 'center' }}>User View Form</Typography>
                                 <FormControl variant="standard" sx={{ margin: 1, width: "100%", gap: '10px' }} >
                                     <TextField
                                         required
@@ -312,30 +309,16 @@ export default function AgentView() {
                                     <TextField
                                         required
                                         id="outlined-required"
-                                        label="Full Name"
-                                        value={fullname}
-                                        onChange={(e) => setFullName(e.target.value)}
+                                        label="Name"
+                                        value={name}
+                                        onChange={(e) => setName(e.target.value)}
                                     />
                                     <TextField
                                         required
                                         id="outlined-required"
-                                        label="Description"
-                                        value={description}
-                                        onChange={(e) => setDescription(e.target.value)}
-                                    />
-                                    <TextField
-                                        required
-                                        id="outlined-required"
-                                        label="Business"
-                                        value={business}
-                                        onChange={(e) => setBusiness(e.target.value)}
-                                    />
-                                    <TextField
-                                        required
-                                        id="outlined-required"
-                                        label="Phone"
-                                        value={phone}
-                                        onChange={(e) => setPhone(e.target.value)}
+                                        label="Email"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
                                     />
                                 </FormControl>
                             </Paper>

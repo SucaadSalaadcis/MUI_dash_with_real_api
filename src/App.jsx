@@ -25,6 +25,7 @@ import PermissionView from './pages/permissionManage/PermissionView';
 import AgentView from './pages/agentManage/AgentView';
 import ProductView from './pages/productManage/ProductView';
 import CustomerView from './pages/customerManage/CustomerView';
+import UserView from './pages/userManage/UserView';
 
 export default function App() {
   return (
@@ -47,6 +48,7 @@ export default function App() {
 
           <Route path='/user_management/users' element={<Users />} />
           <Route path='/users/:id' element={<UserEdit />} />
+          <Route path='/users_view/:id' element={<UserView />} />
 
           <Route path='/products' element={<Product />} />
           <Route path='/product/:id' element={<ProductEdit />} />

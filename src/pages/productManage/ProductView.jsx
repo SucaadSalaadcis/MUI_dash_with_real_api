@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 import Inventory2Icon from '@mui/icons-material/Inventory2';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 import PeopleIcon from '@mui/icons-material/People';
 
-import { Box, Button, FormControl, Paper, TextField, Typography } from '@mui/material';
+import { FormControl, Paper, TextField, Typography } from '@mui/material';
 import Cookies from 'js-cookie';
 import axios from 'axios';
 
@@ -26,7 +26,6 @@ export default function ProductView() {
 
 
     const params = useParams();
-    const navigate = useNavigate();
 
 
     // get single data 
