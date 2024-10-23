@@ -30,6 +30,7 @@ import RoleView from './pages/roles/RoleView';
 import OrderView from './pages/orderManage/OrderView';
 import AgentPost from './pages/agentManage/AgentPost';
 import CustomerPost from './pages/customerManage/CustomerPost';
+import OrderPost from './pages/orderManage/OrderPost';
 
 export default function App() {
   return (
@@ -37,6 +38,7 @@ export default function App() {
 
       <B>
         <Routes>
+
           <Route path='/' element={<Index />} />
           <Route path='/rtl' element={<Rtl />} />
           <Route path='/virtual_reality' element={<Virtual_reality />} />
@@ -72,6 +74,8 @@ export default function App() {
           <Route path='/orders' element={<Order />} />
           <Route path='/order/:id' element={<OrderEdit />} />
           <Route path='/order_view/:id' element={<OrderView />} />
+          <Route path='/order_post' element={<OrderPost />} />
+
         </Routes>
       </B>
 

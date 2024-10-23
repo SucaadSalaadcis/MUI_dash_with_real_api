@@ -1,79 +1,145 @@
+import { useEffect, useState } from "react";
 
-import { Link } from 'react-router-dom'
+import toast from "react-hot-toast";
+import Select from 'react-select';
+import Cookies from 'js-cookie';
 
+import axios from 'axios';
+
+import AddIcon from '@mui/icons-material/Add';
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 import Inventory2Icon from '@mui/icons-material/Inventory2';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 import PeopleIcon from '@mui/icons-material/People';
-import { Button } from '@mui/material';
+import { Box, Button, FormControl, Paper, TextField, Typography } from '@mui/material';
 
-import Reusible_data_table from '../reusible/Reusible_data_table';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
-import AddBoxIcon from '@mui/icons-material/AddBox';
 
-export default function Order() {
-
-    const OrderColumns = [
-        {
-            field: 'product', headerName: 'Product', width: 130,
-            renderCell: (params) => {
-                return (
-                    params.row.product?.name || <Button variant="contained" size='small' sx={{ borderRadius: '5%', backgroundColor: '#E53270' }}> Not Assigned </Button>
-                )
-            }
-        },
-        {
-            field: 'customer', headerName: 'Customer', width: 150,
-            renderCell: (params) => {
-                return (
-                    params.row.customer[0]?.fullname ||
-                    <Button variant="contained" size='small' sx={{ borderRadius: '5%', backgroundColor: '#E53270' }}> Not Assigned </Button>
-                )
-            }
-        },
-        {
-            field: 'agent', headerName: 'Agent', width: 150,
-            renderCell: (params) => {
-                return (
-                    params.row.agent[0]?.fullname ||
-                    <Button variant="contained" size='small' sx={{ borderRadius: '5%', backgroundColor: '#E53270' }}> Not Assigned </Button>
-                )
-            }
-        },
-        {
-            field: 'product_price', headerName: 'Product_price', width: 111,
-            renderCell: (params) => {
-                return (
-                    // order.product_price.price 
-                    params.row.product_price.price ||
-                    <Button variant="contained" size='small' sx={{ borderRadius: '5%', backgroundColor: '#E53270' }}> Not Assigned </Button>
-                )
-            }
-        },
-        {
-            field: 'product_commission', headerName: 'Product_commission', width: 111,
-            renderCell: (params) => {
-                return (
-                    //order.product_commission.commission
-                    params.row.product_commission.commission ||
-                    <Button variant="contained" size='small' sx={{ borderRadius: '5%', backgroundColor: '#E53270' }}> Not Assigned </Button>
-                )
-            }
-        },
-        {
-            field: 'status', headerName: 'Status', width: 100,
-            renderCell: (params) => {
-                return (
-                    //order.status_label
-                    params.row.status_label ||
-                    <Button variant="contained" size='small' sx={{ borderRadius: '5%', backgroundColor: '#E53270' }}> Not Assigned </Button>
-                )
-            }
-        },
+export default function OrderPost() {
 
 
-    ];
+    const getToken = () => Cookies.get('token');
+
+    // State management
+    const [orders, setOrders] = useState([]);
+    const [customers, setCustomers] = useState([]);
+    const [agents, setAgents] = useState([]);
+    const [productPrices, setProductPrices] = useState([]);
+    const [productCommisions, setProductCommisions] = useState([]);
+
+    const [selectedOrders, setSelectedOrders] = useState([]);
+
+    const [selectedCustomer, setSelectedCustomer] = useState([]);
+    const [selectedAgent, setSelectedAgent] = useState([]);
+
+    const [selectedProductPrice, setSelectedProductPrice] = useState(null);
+    const [selectedProductCommision, setSelectedProductCommision] = useState(null);
+
+    const [selectedProduct_price_id, setSelectedProduct_price_id] = useState('');
+    const [selectedProduct_commission_id, setSelectedProduct_commission_id] = useState('');
+    const [selectStatus, setSelectedStatus] = useState('');
+    const [selectProduct_id, setSelectedProduct_id] = useState('');
+    const [ownerId, setOwnerId] = useState('');
+
+
+    const navigate = useNavigate();
+
+
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const orderResponse = await axios.get('https://spiky-crater-dep2vxlep8.ploi.online/api/v1/orders/create', {
+                    headers: {
+                        'Authorization': `Bearer ${getToken()}`,
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                });
+                setOrders(orderResponse.data.meta.product || []);
+                setProductPrices(orderResponse.data.meta.product_price || []);
+                setProductCommisions(orderResponse.data.meta.product_commission || []);
+
+                const customerResponse = await axios.get('https://spiky-crater-dep2vxlep8.ploi.online/api/v1/customers', {
+                    headers: { 'Authorization': `Bearer ${getToken()}` },
+                });
+                setCustomers(customerResponse.data.data);
+
+                const agentResponse = await axios.get('https://spiky-crater-dep2vxlep8.ploi.online/api/v1/agents', {
+                    headers: { 'Authorization': `Bearer ${getToken()}` },
+                });
+                setAgents(agentResponse.data.data);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+        fetchData();
+    }, []);
+
+
+
+
+    const postOrderData = async (e) => {
+        e.preventDefault();
+
+        // Ensure selectedCustomer and selectedAgent are arrays before mapping
+        const customerArray = Array.isArray(selectedCustomer)
+            ? selectedCustomer.map(cust => ({
+                id: cust.value,
+                fullname: cust.label, // Assuming the label contains the fullname
+            }))
+            : [];
+
+        const agentArray = Array.isArray(selectedAgent)
+            ? selectedAgent.map(ag => ({
+                id: ag.value,
+                fullname: ag.label, // Assuming the label contains the fullname
+            }))
+            : [];
+
+        // Construct the data based on selected values
+        const data = {
+            product_price_id: selectedProductPrice?.value || '',
+            product_commission_id: selectedProductCommision?.value || '',
+            owner_id: ownerId || '', // Assuming you have an owner ID available
+            agent: agentArray, // Array of agent objects
+            customer: customerArray, // Array of customer objects
+            product_id: selectProduct_id || '',
+            status: selectStatus || '', // Changed from status_label to status
+        };
+
+        console.log('data:', data);
+
+        try {
+            const response = await axios.post(
+                `https://spiky-crater-dep2vxlep8.ploi.online/api/v1/orders`, // Ensure this is the correct endpoint for creating/updating orders
+                data,
+                {
+                    headers: {
+                        'Authorization': `Bearer ${getToken()}`,
+                        'Content-Type': 'application/json', // Use JSON for this API
+                    },
+                }
+            );
+
+            console.log('Order updated successfully:', response.data);
+            toast.success("Order updated successfully!");
+            navigate('/orders');
+        } catch (err) {
+            console.error('Error updating order:', err);
+
+            if (err.response?.status === 422) {
+                const errors = err.response.data.errors;
+                console.log('Validation errors:', errors);
+                toast.error(`Failed to update order: ${JSON.stringify(errors)}`);
+            } else {
+                toast.error("An unexpected error occurred.");
+            }
+        }
+    };
+
+
 
 
 
@@ -208,9 +274,9 @@ export default function Order() {
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                                 <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
-                                <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Orders</li>
+                                <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Order Post</li>
                             </ol>
-                            <h6 class="font-weight-bolder mb-0">Order</h6>
+                            <h6 class="font-weight-bolder mb-0">Order Post</h6>
                         </nav>
                         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                             <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -317,21 +383,69 @@ export default function Order() {
                         </div>
                     </div>
                 </nav>
-                {/* post icon */}
-                <Link to={'/order_post'} >
-                    <AddBoxIcon sx={{ fontSize: '60px', color: '#E53270' }} />
-                </Link>
 
                 {/* <!-- End Navbar --> */}
                 <div class="container-fluid py-4">
                     <div class="row">
                         {/* <div class="col-lg-8 col-md-10 mx-auto"> */}
                         {/* content page */}
-                        <Reusible_data_table
-                            apiUrl={'https://spiky-crater-dep2vxlep8.ploi.online/api/v1/orders'}
-                            columns={OrderColumns}
-                            title={'Orders'}
-                        />
+                        <Paper elevation={3} style={{ padding: '70px', borderRadius: '8px' }}>
+                            {/* content page */}
+                            <Typography sx={{ fontWeight: 'bold', marginBottom: '20px', textAlign: 'center' }}>Order Post Form</Typography>
+                            <FormControl variant="standard" sx={{ margin: 1, width: "100%", gap: '10px' }} >
+                                <Select options={orders.map(order => ({ value: order.id, label: order.name }))} isMulti value={selectedOrders} onChange={setSelectedOrders} />
+                                <Select options={customers.map(cust => ({ value: cust.id, label: cust.fullname }))} isMulti value={selectedCustomer} onChange={setSelectedCustomer} />
+                                <Select options={agents.map(agent => ({ value: agent.id, label: agent.fullname }))} isMulti value={selectedAgent} onChange={setSelectedAgent} />
+                                <Select options={productPrices.map(price => ({ value: price.id, label: `${price.price}` }))} value={selectedProductPrice} onChange={setSelectedProductPrice} />
+                                <Select options={productCommisions.map(comm => ({ value: comm.id, label: `${comm.commission}` }))} value={selectedProductCommision} onChange={setSelectedProductCommision} />
+
+                                <TextField
+                                    required
+                                    id="outlined-required"
+                                    label="Product_price_id"
+                                    value={selectedProduct_price_id}
+                                    onChange={(e) => setSelectedProduct_price_id(e.target.value)}
+                                />
+                                <TextField
+                                    required
+                                    id="outlined-required"
+                                    label="Product_commission_id"
+                                    value={selectedProduct_commission_id}
+                                    onChange={(e) => setSelectedProduct_commission_id(e.target.value)}
+                                />
+                                <TextField
+                                    required
+                                    id="outlined-required"
+                                    label="Product_id"
+                                    value={selectProduct_id}
+                                    onChange={(e) => setSelectedProduct_id(e.target.value)}
+                                />
+                                <TextField
+                                    required
+                                    id="outlined-required"
+                                    label="Owner_id"
+                                    value={ownerId}
+                                    onChange={(e) => setOwnerId(e.target.value)}
+                                />
+                                <TextField
+                                    required
+                                    id="outlined-required"
+                                    label="Status"
+                                    value={selectStatus}
+                                    onChange={(e) => setSelectedStatus(e.target.value)}
+                                />
+                            </FormControl>
+                            <Box display="flex" justifyContent="flex-end" mt={2}>
+                                <Button variant="contained"
+                                    startIcon={<AddIcon />}
+                                    style={{ backgroundColor: '#E53270', paddingRight: '25px', }}
+                                    onClick={postOrderData}
+                                >
+                                    Post
+                                </Button>
+                            </Box>
+
+                        </Paper>
 
                         {/* </div> */}
                     </div>
