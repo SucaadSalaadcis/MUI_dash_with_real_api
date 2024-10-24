@@ -11,8 +11,9 @@ export default function Logout() {
 
     const handleLogout = () => {
         // localStorage.clear();
-        Cookies.remove('token')
-        navigate('/sign_in')
+        Cookies.remove('token');
+        navigate('/sign_in');
+        window.location.reload(1);
     };
 
     return (
