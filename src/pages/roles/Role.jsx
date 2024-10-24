@@ -17,36 +17,42 @@ import { Footer, LogoutLink, NavBar, SideNavHeader } from '../reusible/Sidebar';
 export default function Role() {
 
     const roleColumns = [
-        { field: 'id', headerName: 'ID', width: 150 },
-        { field: 'title', headerName: 'Title', width: 150 },
+        { field: 'id', headerName: 'ID', width: 120 },
+        { field: 'title', headerName: 'Title', width: 120 },
         // { field: 'permissions', headerName: 'Permissions', width: 150 },
         {
             field: 'permissions',
             headerName: 'Permissions',
-            width: 300,
+            width: 520,
             renderCell: (params) => (
                 <Box
                     sx={{
                         display: 'flex',
-                        flexDirection: 'column',
-                        gap: '4px', // Space between buttons
-                        maxHeight: '150px', // Set max height to prevent row overflow
-                        overflowY: 'auto', // Scroll when content exceeds max height
-                        padding: '5px', // Optional padding for better layout
+                        flexWrap: 'wrap',
+                        gap: '8px',
+                        padding: '8px',
+                        width: '100%',
+                        maxHeight: '100px', // Limit the height to prevent overflow
+                        overflowY: 'auto', // Enable vertical scrolling
+                        boxSizing: 'border-box', // Prevent content overflow due to padding
                         backgroundColor: '#f5f5f5',
                         borderRadius: '4px',
+                        justifyContent: 'flex-start', // Align items to the left
                     }}
                 >
                     {params.value && params.value.length > 0 ? (
                         params.value.map((permission, index) => (
                             <Button
                                 key={index}
-                                style={{
+                                variant="contained"
+                                size="small"
+                                sx={{
                                     color: 'white',
-                                    border: 'none',
+                                    backgroundColor: '#E53270',
                                     borderRadius: '20px',
-                                    background: '#E53270',
-                                    padding: '2px 6px',
+                                    padding: '4px 12px', // Adjust padding for uniform size
+                                    textTransform: 'none',
+                                    minWidth: '120px', // Ensure consistent button width
                                 }}
                             >
                                 {permission.title}
@@ -57,7 +63,7 @@ export default function Role() {
                     )}
                 </Box>
             ),
-        },
+        }
     ];
 
     return (
