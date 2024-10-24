@@ -5,7 +5,7 @@ import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 import Inventory2Icon from '@mui/icons-material/Inventory2';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 import FaceIcon from '@mui/icons-material/Face';
-import { FormControl, Paper, TextField, Typography } from '@mui/material';
+import { Box, FormControl, Paper, TextField, Typography } from '@mui/material';
 import Cookies from 'js-cookie';
 import axios from 'axios';
 import BackIcon from '../reusible/BackIcon';
@@ -284,27 +284,29 @@ export default function PermissionView() {
                     <div class="row">
                         <div class="col-lg-8 col-md-10 mx-auto">
                             <BackIcon pathUrl={'/user_management/permission'} />
-                            <Paper elevation={3} style={{ padding: '70px', borderRadius: '8px' }}>
-                                {/* content page */}
-                                <Typography sx={{ fontWeight: 'bold', marginBottom: '20px', textAlign: 'center' }}>Permission View Form</Typography>
-                                <FormControl variant="standard" sx={{ margin: 1, width: "100%", gap: 3 }} >
-                                    <TextField
-                                        required
-                                        id="outlined-required"
-                                        label="ID"
-                                        value={id}
-                                        onChange={(e) => setId(e.target.value)}
-                                    />
-                                    <TextField
-                                        required
-                                        id="outlined-required"
-                                        label="Required"
-                                        value={title}
-                                        onChange={(e) => setTitle(e.target.value)}
-                                    />
-                                </FormControl>
+                            {/* <Box style={{backgroundColor: '#E53270', padding: '50px', borderRadius: '5%'}}> */}
+                                <Paper elevation={3} style={{ padding: '70px', borderRadius: '8px' }}>
+                                    {/* content page */}
+                                    <Typography sx={{ fontWeight: 'bold', marginBottom: '20px', textAlign: 'center' }}>Permission View Form</Typography>
+                                    <FormControl variant="standard" sx={{ margin: 1, width: "100%", gap: 3 }} >
+                                        <TextField
+                                            required
+                                            id="outlined-required"
+                                            label="ID"
+                                            value={id}
+                                            onChange={(e) => setId(e.target.value)}
+                                        />
+                                        <TextField
+                                            required
+                                            id="outlined-required"
+                                            label="Required"
+                                            value={title}
+                                            onChange={(e) => setTitle(e.target.value)}
+                                        />
+                                    </FormControl>
 
-                            </Paper>
+                                </Paper>
+                            {/* </Box> */}
                         </div>
                     </div>
 
