@@ -15,10 +15,10 @@ import { Footer, LogoutLink, NavBar, SideNavHeader } from '../reusible/Sidebar';
 export default function Product() {
 
     const productColumns = [
-        { field: 'id', headerName: 'ID', width: 150 },
-        { field: 'name', headerName: 'Name', width: 150 },
-        { field: 'price', headerName: 'Price', width: 150 },
-        { field: 'commission', headerName: 'Commission', width: 150 },
+        { field: 'id', headerName: 'ID', width: 180 },
+        { field: 'name', headerName: 'Name', width: 180 },
+        { field: 'price', headerName: 'Price', width: 180 },
+        { field: 'commission', headerName: 'Commission', width: 180 },
     ];
 
     return (

@@ -148,7 +148,7 @@ const Reusible_data_table = ({ apiUrl, columns, title }) => {
 
 
     return (
-        <Paper elevation={3} style={{ padding: '70px', borderRadius: '8px' }}>
+        <Paper elevation={3} style={{ padding: '20px 60px 130px 60px', borderRadius: '8px' }}>
 
             {/* select page size */}
             <FormControl variant="standard" sx={{ margin: 1, width: 120 }} >
@@ -218,22 +218,23 @@ const Reusible_data_table = ({ apiUrl, columns, title }) => {
 
                             }}
                         />
+                        {/* pagination */}
+                        <Box className="d-flex justify-content-end align-items-center my-4 mt-5">
+                            <Button
+                                onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                                disabled={currentPage === 1}
+                                style={{ backgroundColor: currentPage === 1 ? '#ccc' : '#E53270', color: '#fff', border: 'none', borderRadius: '4px', padding: '8px ', cursor: currentPage === 1 ? 'not-allowed' : 'pointer', marginRight: '5px', }}>
+                                Previous
+                            </Button>
+                            <Typography style={{ margin: '0 10px' }}>Page {currentPage} of {totalPages}</Typography>
+                            <button
+                                onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+                                disabled={currentPage === totalPages}
+                                style={{ backgroundColor: currentPage === totalPages ? '#ccc' : '#E53270', color: '#fff', border: 'none', borderRadius: '4px', padding: '5px 10px', cursor: currentPage === totalPages ? 'not-allowed' : 'pointer' }}>
+                                Next
+                            </button>
+                        </Box>
                     </div>
-                    <Box className="d-flex justify-content-end align-items-center my-4 mt-5">
-                        <Button
-                            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-                            disabled={currentPage === 1}
-                            style={{ backgroundColor: currentPage === 1 ? '#ccc' : '#E53270', color: '#fff', border: 'none', borderRadius: '4px', padding: '8px ', cursor: currentPage === 1 ? 'not-allowed' : 'pointer', marginRight: '5px', }}>
-                            Previous
-                        </Button>
-                        <Typography style={{ margin: '0 10px' }}>Page {currentPage} of {totalPages}</Typography>
-                        <button
-                            onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
-                            disabled={currentPage === totalPages}
-                            style={{ backgroundColor: currentPage === totalPages ? '#ccc' : '#E53270', color: '#fff', border: 'none', borderRadius: '4px', padding: '5px 10px', cursor: currentPage === totalPages ? 'not-allowed' : 'pointer' }}>
-                            Next
-                        </button>
-                    </Box>
                 </>
             )}
         </Paper>

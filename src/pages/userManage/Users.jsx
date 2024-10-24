@@ -16,9 +16,9 @@ import { Footer, LogoutLink, NavBar, SideNavHeader } from '../reusible/Sidebar';
 export default function Users() {
 
     const userColumns = [
-        { field: 'id', headerName: 'ID', width: 150 },
-        { field: 'name', headerName: 'Name', width: 150 },
-        { field: 'email', headerName: 'Email', width: 150 },
+        { field: 'id', headerName: 'ID', width: 230 },
+        { field: 'name', headerName: 'Name', width: 230 },
+        { field: 'email', headerName: 'Email', width: 230 },
     ];
 
     return (

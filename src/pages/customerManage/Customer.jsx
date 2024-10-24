@@ -16,10 +16,10 @@ import { Footer, LogoutLink, NavBar, SideNavHeader } from '../reusible/Sidebar';
 export default function Customer() {
 
     const custColumns = [
-        { field: 'id', headerName: 'ID', width: 150 },
-        { field: 'fullname', headerName: 'Full Name', width: 150 },
-        { field: 'phone', headerName: 'Phone', width: 150 },
-        { field: 'agency_id', headerName: 'Agency ID', width: 150 },
+        { field: 'id', headerName: 'ID', width: 190 },
+        { field: 'fullname', headerName: 'Full Name', width: 190 },
+        { field: 'phone', headerName: 'Phone', width: 190 },
+        { field: 'agency_id', headerName: 'Agency ID', width: 190 },
     ];
 
 

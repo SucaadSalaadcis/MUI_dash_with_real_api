@@ -16,8 +16,8 @@ import { Footer, LogoutLink, NavBar, SideNavHeader } from '../reusible/Sidebar';
 export default function Permission() {
 
     const permissionColumns = [
-        { field: 'id', headerName: 'ID', width: 150 },
-        { field: 'title', headerName: 'Title', width: 150 },
+        { field: 'id', headerName: 'ID', width: 350 },
+        { field: 'title', headerName: 'Title', width: 350 },
     ];
 
     return (
