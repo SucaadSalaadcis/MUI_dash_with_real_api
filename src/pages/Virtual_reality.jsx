@@ -392,6 +392,7 @@ export default function Virtual_reality() {
           </div>
         </main>
       </div >
+      
       <footer class="footer py-4 " style={{ marginTop: '100px' }}>
         <div class="container-fluid">
           <div class="row align-items-center justify-content-lg-between">

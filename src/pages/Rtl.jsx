@@ -609,6 +609,7 @@ export default function Rtl() {
                                         <span class="font-weight-bold">24%</span> هذا الشهر
                                     </p>
                                 </div>
+                                
                                 <div class="card-body p-3">
                                     <div class="timeline timeline-one-side">
                                         <div class="timeline-block mb-3">
