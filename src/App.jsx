@@ -3,7 +3,6 @@ import Index from './pages/Index'
 import { BrowserRouter as B, Routes, Route } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast';
 
-import Rtl from './pages/Rtl'
 import Virtual_reality from './pages/Virtual_reality'
 import Sign_up from './pages/Sign_up'
 import Sign_in from './pages/Sign_in'
@@ -44,7 +43,6 @@ export default function App() {
         <Routes>
 
           <Route path='/' element={<Index />} />
-          <Route path='/rtl' element={<Rtl />} />
           <Route path='/virtual_reality' element={<Virtual_reality />} />
           <Route path='/sign_up' element={<Sign_up />} />
           <Route path='/sign_in' element={<Sign_in />} />
