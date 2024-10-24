@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Cookies from 'js-cookie';
 import { Box } from "@mui/material";
 
-export default function Logout({ name }) {
+export default function Logout() {
 
     const navigate = useNavigate(); // Correctly use the hook inside the component
 
@@ -17,7 +17,7 @@ export default function Logout({ name }) {
 
     return (
         <Box onClick={handleLogout}>
-            {name}
+            Logout
         </Box>
     );
 }
