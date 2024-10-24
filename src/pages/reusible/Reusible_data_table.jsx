@@ -141,7 +141,6 @@ const Reusible_data_table = ({ apiUrl, columns, title }) => {
     };
 
 
-    // Handle pageSize change from the <Select> input
     const handlePageSizeChange = (event) => {
         setPageSize(event.target.value);
     };
