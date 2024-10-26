@@ -2,19 +2,20 @@ import React, { useEffect, useState } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import axios from 'axios';
 import Cookies from 'js-cookie';
-import { GridLoader } from 'react-spinners';
-import { Box, Button, Typography, Paper, FormControl, InputLabel, Select, MenuItem, IconButton } from '@mui/material';
+import { ClipLoader } from 'react-spinners';
+import { Box, Button, Typography, Paper, FormControl, InputLabel, Select, MenuItem, IconButton, Stack } from '@mui/material';
 import Swal from 'sweetalert2';
-import EditIcon from '@mui/icons-material/Edit';
+
 
 import DeleteIcon from '@mui/icons-material/Delete';
-import { Link, useLocation } from 'react-router-dom';
-import VisibilityIcon from '@mui/icons-material/Visibility';
+
+
+import { Add, Edit, View } from './Add_Edit_View';
 
 
 const Reusible_data_table = ({ apiUrl, columns, title }) => {
 
-    const location = useLocation();
+
 
     const [rows, setRows] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -97,44 +98,11 @@ const Reusible_data_table = ({ apiUrl, columns, title }) => {
                 >
                     <DeleteIcon style={{ color: "#E53270" }} />
                 </IconButton>
+                {/* edit component */}
+                <Edit EditParam={params.row.id} />
 
-                {
-                    location.pathname === '/user_management/permission' ? <Link to={`/permission/${params.row.id}`}>
-                        <EditIcon style={{ color: "blue" }} />
-                    </Link> : location.pathname === '/agents' ? <Link to={`/agent/${params.row.id}`}>
-                        <EditIcon style={{ color: "blue" }} />
-                    </Link> : location.pathname === '/customers' ? <Link to={`/customer/${params.row.id}`}>
-                        <EditIcon style={{ color: "blue" }} />
-                    </Link> : location.pathname === '/products' ? <Link to={`/product/${params.row.id}`}>
-                        <EditIcon style={{ color: "blue" }} />
-                    </Link> : location.pathname === '/user_management/roles' ? <Link to={`/role/${params.row.id}`}>
-                        <EditIcon style={{ color: "blue" }} />
-                    </Link> : location.pathname === '/user_management/users' ? <Link to={`/users/${params.row.id}`}>
-                        <EditIcon style={{ color: "blue" }} />
-                    </Link> : location.pathname === '/orders' ? <Link to={`/order/${params.row.id}`}>
-                        <EditIcon style={{ color: "blue" }} />
-                    </Link> : ""
-
-                }
-                {
-                    location.pathname === '/user_management/permission' ? <Link to={`/permission_view/${params.row.id}`}>
-                        <VisibilityIcon style={{ color: "green", marginLeft: '8px' }} />
-                    </Link> : location.pathname === '/agents' ? <Link to={`/agent_view/${params.row.id}`}>
-                        <VisibilityIcon style={{ color: "green", marginLeft: '8px' }} />
-                    </Link> : location.pathname === '/products' ? <Link to={`/product_view/${params.row.id}`}>
-                        <VisibilityIcon style={{ color: "green", marginLeft: '8px' }} />
-                    </Link> : location.pathname === '/customers' ? <Link to={`/customer_view/${params.row.id}`}>
-                        <VisibilityIcon style={{ color: "green", marginLeft: '8px' }} />
-                    </Link> : location.pathname === '/user_management/users' ? <Link to={`/users_view/${params.row.id}`}>
-                        <VisibilityIcon style={{ color: "green", marginLeft: '8px' }} />
-                    </Link> : location.pathname === '/user_management/roles' ? <Link to={`/role_view/${params.row.id}`}>
-                        <VisibilityIcon style={{ color: "green", marginLeft: '8px' }} />
-                    </Link> : location.pathname === '/orders' ? <Link to={`/order_view/${params.row.id}`}>
-                        <VisibilityIcon style={{ color: "green", marginLeft: '8px' }} />
-                    </Link> : ""
-
-
-                }
+                {/* edit view */}
+                <View veiwParam={params.row.id} />
 
             </>
         ),
@@ -150,6 +118,7 @@ const Reusible_data_table = ({ apiUrl, columns, title }) => {
         <Paper elevation={3} style={{ padding: '20px 60px 130px 60px', borderRadius: '8px' }}>
 
             {/* select page size */}
+
             <FormControl variant="standard" sx={{ margin: 1, width: 120 }} >
                 <InputLabel id="page-size-label">Page Size</InputLabel>
                 <Select
@@ -168,6 +137,8 @@ const Reusible_data_table = ({ apiUrl, columns, title }) => {
                     <MenuItem value={50}>50</MenuItem>
                 </Select>
             </FormControl>
+            {/* add component */}
+            <Add />
 
             <Typography variant="h5" gutterBottom style={{ textAlign: 'center' }}>
                 {title} Data Table
@@ -175,7 +146,7 @@ const Reusible_data_table = ({ apiUrl, columns, title }) => {
 
             {/* loading */}
             {loading ? (
-                <GridLoader color="#E53270" loading={loading} size={15} />
+                <ClipLoader color="#E53270" loading={loading} size={48} />
             ) : (
                 <>
                     {/* data grid */}

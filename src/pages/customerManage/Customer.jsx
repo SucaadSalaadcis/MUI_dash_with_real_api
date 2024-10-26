@@ -9,7 +9,6 @@ import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 import PeopleIcon from '@mui/icons-material/People';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 
-import AddBoxIcon from '@mui/icons-material/AddBox';
 
 import { Footer, LogoutLink, NavBar, SideNavHeader } from '../reusible/Sidebar';
 
@@ -132,10 +131,6 @@ export default function Customer() {
             <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
                 {/* <!-- Navbar --> */}
                 <NavBar title={'Customers'} />
-                {/* post icon */}
-                <Link to={'/cust_post'} >
-                    <AddBoxIcon sx={{ fontSize: '60px', color: '#E53270' }} />
-                </Link>
                 {/* <!-- End Navbar --> */}
                 <div class="container-fluid py-4">
                     <div class="row">
