@@ -248,7 +248,7 @@ export default function OrderPost() {
 
                     </ul>
                 </div>
-
+                <hr />
                 <LogoutLink />
 
             </aside>

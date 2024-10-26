@@ -121,7 +121,7 @@ export default function Virtual_reality() {
 
             </ul>
           </div>
-
+          <hr />
           <LogoutLink />
 
         </aside>

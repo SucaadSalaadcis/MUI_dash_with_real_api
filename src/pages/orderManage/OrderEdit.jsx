@@ -307,7 +307,7 @@ export default function OrderEdit() {
 
                     </ul>
                 </div>
-
+                <hr />
                 <LogoutLink />
 
             </aside>

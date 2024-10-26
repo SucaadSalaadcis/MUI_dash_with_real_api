@@ -141,7 +141,7 @@ export default function PermissionView() {
 
                     </ul>
                 </div>
-
+                <hr />
                 <LogoutLink />
 
             </aside>

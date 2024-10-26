@@ -181,7 +181,7 @@ export default function Order() {
 
                     </ul>
                 </div>
-
+                <hr />
                 <LogoutLink />
 
             </aside>

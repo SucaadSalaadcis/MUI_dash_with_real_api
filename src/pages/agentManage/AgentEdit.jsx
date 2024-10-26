@@ -176,7 +176,7 @@ export default function AgentEdit() {
 
                     </ul>
                 </div>
-
+                <hr />
                 <LogoutLink />
 
             </aside>

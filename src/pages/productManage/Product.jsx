@@ -125,7 +125,7 @@ export default function Product() {
                         </li>
                     </ul>
                 </div>
-
+                <hr />
                 <LogoutLink />
 
             </aside>

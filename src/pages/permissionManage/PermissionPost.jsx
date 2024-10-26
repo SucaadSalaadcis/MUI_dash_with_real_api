@@ -153,7 +153,7 @@ export default function PermissionPost() {
                         </li>
                     </ul>
                 </div>
-
+                <hr />
                 <LogoutLink />
 
             </aside>

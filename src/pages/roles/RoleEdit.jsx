@@ -207,7 +207,7 @@ export default function RoleEdit() {
                         </li>
                     </ul>
                 </div>
-                
+                <hr />
                 <LogoutLink />
 
             </aside>

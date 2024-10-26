@@ -27,7 +27,7 @@ export default function Role() {
             renderCell: (params) => (
                 <Box
                     sx={{
-                        
+
                         display: 'flex',
                         flexWrap: 'wrap',
                         gap: '8px',
@@ -172,7 +172,7 @@ export default function Role() {
                         </li>
                     </ul>
                 </div>
-
+                <hr />
                 <LogoutLink />
 
             </aside>

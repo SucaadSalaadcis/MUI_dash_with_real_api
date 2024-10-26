@@ -156,7 +156,7 @@ export default function CustomerView() {
                         </li>
                     </ul>
                 </div>
-
+                <hr />
                 <LogoutLink />
 
             </aside>

@@ -147,7 +147,7 @@ export default function AgentPost() {
 
                     </ul>
                 </div>
-
+                <hr />
                 <LogoutLink />
 
             </aside>

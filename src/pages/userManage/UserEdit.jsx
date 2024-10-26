@@ -186,7 +186,7 @@ export default function UserEdit() {
                         </li>
                     </ul>
                 </div>
-
+                <hr />
                 <LogoutLink />
 
             </aside>

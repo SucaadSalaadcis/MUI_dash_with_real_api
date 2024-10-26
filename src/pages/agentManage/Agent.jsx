@@ -125,7 +125,7 @@ export default function Agent() {
 
           </ul>
         </div>
-
+        <hr />
         <LogoutLink />
 
       </aside>
