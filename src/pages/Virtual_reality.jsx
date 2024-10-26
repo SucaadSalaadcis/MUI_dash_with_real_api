@@ -25,7 +25,7 @@ export default function Virtual_reality() {
           <SideNavHeader />
 
           <hr class="horizontal light mt-0 mb-2" />
-          <div class="collapse navbar-collapse  w-auto  max-height-vh-100" id="sidenav-collapse-main">
+          <div>
             <ul class="navbar-nav">
               <li class="nav-item">
                 <Link to={'/'} class="nav-link text-white ">
