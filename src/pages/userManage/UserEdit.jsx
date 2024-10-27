@@ -192,7 +192,7 @@ export default function UserEdit() {
             </aside>
             <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
                 {/* <!-- Navbar --> */}
-                <NavBar title={'Role Edit'} />
+                <NavBar title={'User Edit'} />
 
                 {/* <!-- End Navbar --> */}
                 <div class="container-fluid py-4">
@@ -201,7 +201,7 @@ export default function UserEdit() {
                             <BackIcon pathUrl={'/user_management/users'} />
                             <Paper elevation={3} style={{ padding: '70px', borderRadius: '8px' }}>
                                 {/* content page */}
-                                <Typography sx={{ fontWeight: 'bold', marginBottom: '20px', textAlign: 'center' }}>Role Edit Form</Typography>
+                                <Typography sx={{ fontWeight: 'bold', marginBottom: '20px', textAlign: 'center' }}>User Edit Form</Typography>
                                 <FormControl variant="standard" sx={{ margin: 1, width: "100%", gap: '10px' }} >
                                     <TextField
                                         required
