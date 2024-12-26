@@ -48,7 +48,7 @@ export default function Order() {
             renderCell: (params) => {
                 return (
                     // order.product_price.price 
-                    params.row.product_price.price ||
+                    params.row.product_price?.price || 
                     <Button variant="contained" size='small' sx={{ borderRadius: '5%', backgroundColor: '#E53270' }}> Not Assigned </Button>
                 )
             }
@@ -58,7 +58,7 @@ export default function Order() {
             renderCell: (params) => {
                 return (
                     //order.product_commission.commission
-                    params.row.product_commission.commission ||
+                    params.row.product_commission?.commission ||
                     <Button variant="contained" size='small' sx={{ borderRadius: '5%', backgroundColor: '#E53270' }}> Not Assigned </Button>
                 )
             }
